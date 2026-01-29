@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio y CV de Jesús Emilio Palacín Gómez - Project Manager PMP y Consultor PMO">
-    <title>Jesús Emilio Palacín Gómez | PMP® & PMO</title>
+    <meta name="description" content="Portafolio de Emilio Palacín Gómez PMP - Consultor PMO y Project Manager">
+    <title>Emilio Palacín Gómez PMP | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <!-- Fuente profesional (Roboto) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Iconos (FontAwesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -16,12 +16,12 @@
     <!-- NAVEGACIÓN -->
     <nav>
         <div class="container nav-container">
-            <div class="logo">JP</div>
+            <!-- AQUI ESTA TU NUEVA IDENTIFICACIÓN -->
+            <div class="logo">EMILIO PALACÍN GÓMEZ <span class="highlight">PMP®</span></div>
             <ul class="nav-links">
                 <li><a href="#perfil">Perfil</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#portafolio">Portafolio</a></li>
-                <li><a href="#formacion">Formación</a></li>
                 <li><a href="#contacto" class="btn-nav">Contacto</a></li>
             </ul>
         </div>
@@ -31,17 +31,17 @@
     <header class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Jesús Emilio Palacín Gómez</h1>
+                <h1>Emilio Palacín Gómez</h1>
                 <h2>Consultor PMO | Project Manager PMP®</h2>
-                <p>Control de Proyectos, Costos y Reporting Ejecutivo con Power BI & Analítica.</p>
+                <p>Especialista en Control de Proyectos, Gestión de Costos y Reporting Ejecutivo con Power BI & Analítica de Datos.</p>
                 <div class="hero-btns">
                     <a href="#contacto" class="btn btn-primary">Contactar</a>
                     <a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
             <div class="hero-img">
-                <!-- CAMBIAR: Sube tu foto al repositorio y cambia la ruta aquí -->
-                <img src=perfil.jpg alt="Emilio Palacín Gómez">
+                <!-- RUTA DEFINITIVA A LA FOTO -->
+                <img src="perfil.jpg" alt="Emilio Palacín Gómez PMP" onerror="this.style.display='none'">
             </div>
         </div>
     </header>
@@ -58,134 +58,83 @@
         </div>
     </section>
 
-    <!-- EXPERIENCIA -->
+    <!-- EXPERIENCIA (Resumida) -->
     <section id="experiencia" class="container">
-        <h2 class="section-title">Experiencia Destacada</h2>
+        <h2 class="section-title">Trayectoria</h2>
         
         <div class="timeline">
-            <!-- Trabajo 1 -->
             <div class="job-card">
                 <h3>Project Manager / Consultor PMO</h3>
                 <span class="date">Ene. 2023 – Actualidad | Freelance</span>
                 <ul>
-                    <li>Soporte PMO a proyectos TI y operativos bajo lineamientos PMBOK®.</li>
-                    <li>Diseño e implementación de cuadros de mando PMO en Power BI.</li>
-                    <li>Automatización de reportes de estado y control de KPIs.</li>
-                    <li>Implementación de soluciones Low-Code para trazabilidad de inventarios.</li>
+                    <li>Soporte PMO aplicando lineamientos PMBOK®.</li>
+                    <li>Automatización de reportes ejecutivos en Power BI.</li>
+                    <li>Implementación de controles Low-Code para inventarios.</li>
                 </ul>
             </div>
 
-            <!-- Trabajo 2 -->
             <div class="job-card">
                 <h3>Director Administrativo / PMO</h3>
                 <span class="date">Oct. 2019 – May. 2023 | Consorcio Unión Ingema</span>
                 <ul>
-                    <li>Gestión administrativa y soporte PMO en proyecto nacional de alta complejidad.</li>
-                    <li>Implementación de controles financieros, presupuestales y proyecciones.</li>
-                    <li>Diseño de tableros de seguimiento para monitorear desempeño físico y financiero.</li>
+                    <li>Gestión PMO en proyecto nacional de alta complejidad.</li>
+                    <li>Control financiero, desviaciones y proyecciones de cierre.</li>
                 </ul>
             </div>
-
-            <!-- Trabajo 3 -->
-            <div class="job-card">
-                <h3>Director de Proyectos / Coordinador Operativo</h3>
-                <span class="date">Sep. 1998 – Ago. 2016 | Obras y Diseños S.A.</span>
-                <ul>
-                    <li>Dirección integral de proyectos eléctricos y Oil & Gas (> $75.000M facturación).</li>
-                    <li>Coordinación de equipos de hasta 600 personas y flotas operativas.</li>
-                    <li>Normalización operativa de contratos críticos en 53 días.</li>
-                </ul>
-            </div>
+             
+             <!-- Puedes agregar más empleos del PDF aquí -->
         </div>
     </section>
 
-    <!-- PORTAFOLIO (Basado en tus habilidades) -->
+    <!-- PORTAFOLIO -->
     <section id="portafolio" class="section-bg">
         <div class="container">
-            <h2 class="section-title">Portafolio & Dashboards</h2>
-            <p class="text-center">Ejemplos de visualización de datos y control de proyectos.</p>
+            <h2 class="section-title">Portafolio de Control & Datos</h2>
+            <p class="text-center" style="margin-bottom: 40px;">Ejemplos de Informes Ejecutivos y Herramientas de Control.</p>
             
             <div class="portfolio-grid">
-                <!-- Proyecto 1 -->
+                
+                <!-- PROYECTO 1: LA IMAGEN QUE ENVIASTE -->
                 <div class="portfolio-item">
                     <div class="portfolio-img">
-                        <!-- CAMBIAR IMAGEN LUEGO -->
-                        <img src="https://via.placeholder.com/600x400/003366/ffffff?text=Dashboard+PMO+PowerBI" alt="Dashboard Power BI">
+                        <!-- ESTA ES LA RUTA A TU ARCHIVO DEL GRAFICO -->
+                        <img src="dashboard1.jpg" alt="Informe Ejecutivo Proyecto">
                     </div>
                     <div class="portfolio-info">
-                        <h3>Dashboard PMO Ejecutivo</h3>
-                        <p>Tablero de control en Power BI para monitoreo de Cronograma, Costos y Riesgos.</p>
+                        <h3>Informe Ejecutivo de Proyecto</h3>
+                        <p>Tablero integral para monitoreo de SPI y CPI, Análisis de Varianza Financiera (CV vs SV) y mapa de desempeño por fases.</p>
+                        <span class="skill-tag-small">Power BI</span>
+                        <span class="skill-tag-small">Gestión de Valor Ganado</span>
                     </div>
                 </div>
 
-                <!-- Proyecto 2 -->
+                <!-- PROYECTO 2 (Placeholder) -->
                 <div class="portfolio-item">
                     <div class="portfolio-img">
-                        <img src="https://via.placeholder.com/600x400/333333/ffffff?text=Reporte+Automatizado" alt="Automatización">
+                        <img src="https://via.placeholder.com/600x338/333333/ffffff?text=Reporte+Automatizado" alt="Automatización">
                     </div>
                     <div class="portfolio-info">
-                        <h3>Automatización de Reportes</h3>
-                        <p>Consolidación de múltiples fuentes de datos para reportes periódicos automatizados.</p>
+                        <h3>Automatización de Reportes PMO</h3>
+                        <p>Consolidación de múltiples fuentes de datos reduciendo tiempos de elaboración de informes semanales.</p>
+                        <span class="skill-tag-small">Python / Excel</span>
                     </div>
                 </div>
 
-                <!-- Proyecto 3 -->
+                <!-- PROYECTO 3 (Placeholder) -->
                 <div class="portfolio-item">
                     <div class="portfolio-img">
-                        <img src="https://via.placeholder.com/600x400/004080/ffffff?text=App+Low-Code" alt="App Low Code">
+                        <img src="https://via.placeholder.com/600x338/004080/ffffff?text=App+Inventarios" alt="App Low Code">
                     </div>
                     <div class="portfolio-info">
-                        <h3>Solución Low-Code Inventarios</h3>
-                        <p>Sistema de trazabilidad y control operativo para gestión de activos.</p>
+                        <h3>Sistema Trazabilidad (Low-Code)</h3>
+                        <p>Solución operativa para control de inventarios, consumos y activos en campo.</p>
+                        <span class="skill-tag-small">AppSheet / PowerApps</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- HABILIDADES & FORMACIÓN -->
-    <section id="formacion" class="container">
-        <div class="grid-2-col">
-            <div>
-                <h2 class="section-title-left">Habilidades Clave</h2>
-                <div class="skills-wrapper">
-                    <span class="skill-tag">Project Management (PMP®)</span>
-                    <span class="skill-tag">PMO Support</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Earned Value (EVM)</span>
-                    <span class="skill-tag">Excel Avanzado</span>
-                    <span class="skill-tag">SQL & Python</span>
-                    <span class="skill-tag">Reporting Ejecutivo</span>
-                    <span class="skill-tag">Gestión de Riesgos</span>
-                </div>
-            </div>
-            <div>
-                <h2 class="section-title-left">Formación Académica</h2>
-                <ul class="education-list">
-                    <li><strong>Ingeniero Electricista</strong> - UTP (1993)</li>
-                    <li><strong>Bootcamp IA, ML y Analítica Avanzada</strong> - Cymetria (2025-2026)</li>
-                    <li><strong>BootCamp Análisis de Datos con IA</strong> - BETEK (2025)</li>
-                    <li><strong>Diplomado Desarrollo Apps Móviles</strong> - Tecnisistemas (2025)</li>
-                    <li><strong>Gestión de Proyectos Solares</strong> - U. de los Andes (2024)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER / CONTACTO -->
-    <footer id="contacto">
-        <div class="container">
-            <h2>Hablemos de Proyectos</h2>
-            <p>Disponible para oportunidades en Colombia, Remoto España / LATAM.</p>
-            
-            <div class="contact-links">
-                <a href="mailto:emiliopalacinPMP@gmail.com"><i class="fas fa-envelope"></i> emiliopalacinPMP@gmail.com</a>
-                <a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/emiliopalacinPMP" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-            <p class="copyright">&copy; 2026 Jesús Emilio Palacín Gómez. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+    <section class="cont
