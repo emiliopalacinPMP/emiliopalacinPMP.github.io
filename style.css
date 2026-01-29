@@ -1,0 +1,210 @@
+/* VARIABLES DE COLOR (Institucional y Sobrio) */
+:root {
+    --primary-blue: #003366;   /* Azul Oscuro Institucional */
+    --secondary-blue: #00509e; /* Azul Medio para botones/hover */
+    --light-gray: #f4f6f8;     /* Fondo gris muy suave */
+    --dark-gray: #333333;      /* Texto principal */
+    --medium-gray: #666666;    /* Texto secundario */
+    --white: #ffffff;
+    --accent: #d6e4ff;         /* Detalles suaves */
+}
+
+/* ESTILOS GENERALES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-bg { background-color: var(--light-gray); padding: 80px 0; }
+section { padding: 80px 0; }
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-title-left {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+}
+
+/* NAVEGACIÓN */
+nav {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; }
+
+.nav-links { display: flex; gap: 25px; }
+.nav-links a { font-size: 0.95rem; transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+
+.btn-nav {
+    border: 1px solid var(--white);
+    padding: 5px 15px;
+    border-radius: 4px;
+}
+
+/* HERO SECTION */
+.hero {
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, var(--white) 60%, var(--light-gray) 40%);
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hero-text { flex: 1; padding-right: 40px; }
+.hero-text h1 { font-size: 3rem; color: var(--primary-blue); line-height: 1.2; margin-bottom: 10px; }
+.hero-text h2 { font-size: 1.5rem; color: var(--medium-gray); font-weight: 400; margin-bottom: 20px; }
+.hero-text p { font-size: 1.1rem; color: var(--dark-gray); margin-bottom: 30px; }
+
+.hero-btns .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.btn-primary { background-color: var(--primary-blue); color: var(--white); }
+.btn-primary:hover { background-color: var(--secondary-blue); }
+.btn-outline { border: 2px solid var(--primary-blue); color: var(--primary-blue); }
+.btn-outline:hover { background-color: var(--primary-blue); color: var(--white); }
+
+.hero-img img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--white);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* EXPERIENCIA */
+.job-card {
+    background: var(--white);
+    border-left: 5px solid var(--primary-blue);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.job-card h3 { color: var(--dark-gray); margin-bottom: 5px; }
+.job-card .date { display: block; font-size: 0.9rem; color: var(--medium-gray); margin-bottom: 15px; font-style: italic; }
+.job-card ul { margin-left: 20px; list-style-type: disc; color: var(--medium-gray); }
+.job-card li { margin-bottom: 5px; }
+
+/* PORTAFOLIO */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover { transform: translateY(-5px); }
+
+.portfolio-img img { width: 100%; height: 200px; object-fit: cover; }
+.portfolio-info { padding: 20px; }
+.portfolio-info h3 { font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 10px; }
+.portfolio-info p { font-size: 0.9rem; color: var(--medium-gray); }
+
+/* HABILIDADES & FORMACION */
+.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+
+.skills-wrapper { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-tag {
+    background-color: var(--light-gray);
+    color: var(--primary-blue);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid #ddd;
+}
+
+.education-list li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 0 30px;
+}
+
+.contact-links {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.contact-links a { font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+.contact-links a:hover { color: var(--accent); }
+.copyright { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplificado para movil */
+    .hero-content { flex-direction: column-reverse; text-align: center; }
+    .hero-text { padding-right: 0; }
+    .hero-img { margin-bottom: 30px; }
+    .hero-img img { width: 250px; height: 250px; }
+    .grid-2-col { grid-template-columns: 1fr; }
+    .contact-links { flex-direction: column; gap: 15px; }
+}
