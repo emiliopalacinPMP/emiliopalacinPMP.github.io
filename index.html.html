@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&D Analítica de Infraestructura | Emilio Palacín, PMP</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta institucional aplicada */
+            --primary: #1A3B5D;     /* Azul Petróleo */
+            --dark-bg: #2C3E50;     /* Carbón */
+            --card-bg: #34495e;     
+            --accent: #28A745;      /* Verde Bosque */
+            --bright-blue: #2980B9; /* Azul Brillante */
+            --text-silver: #BDC3C7; /* Plata */
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-silver);
+            margin: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--bright-blue);
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        h1 { color: var(--white); margin-bottom: 5px; font-weight: 700; }
+        .tagline { color: var(--text-silver); font-style: italic; margin-bottom: 30px; opacity: 0.9; }
+        
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        /* Contenedor de perfil corregido */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--bright-blue);
+            object-fit: cover; /* Asegura que la foto no se deforme */
+            background-color: var(--primary);
+        }
+        .profile-header h2 { margin: 0; color: var(--white); }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--bright-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .btn:hover { 
+            background: var(--bright-blue);
+            transform: translateY(-2px);
+        }
+        
+        .footer { 
+            text-align: center; 
+            font-size: 0.85rem; 
+            color: var(--text-silver); 
+            margin-top: 50px; 
+            padding: 30px 20px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>P&D Analítica de Infraestructura</h1>
+    <p class="tagline">Traducción Estratégica: Ingeniería Eléctrica + Data Science + PMBOK 8</p>
+    <a href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" class="btn"><i class="fab fa-linkedin"></i> Newsletter</a>
+    <a href="mailto:emiliopalacinPMP@gmail.com" class="btn"><i class="fas fa-envelope"></i> Contactar</a>
+</header>
+
+<div class="container">
+    <div class="card">
+        <div class="profile-header">
+            <img src="foto-epg.jpg" alt="Emilio Palacín Gómez, PMP" class="profile-photo">
+            <h2>Emilio Palacín Gómez, PMP</h2>
+        </div>
+        <p>Ingeniero Eléctrico con más de 20 años de experiencia. Traductor Estratégico experto en cerrar la brecha entre la gestión tradicional y la analítica moderna.</p>
+        <a href="https://www.linkedin.com/in/emiliopalacinPMP" class="btn">Ver Perfil LinkedIn</a>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-microchip"></i> Motores de Inteligencia</h3>
+        <p>Algoritmos en <strong>Python</strong> para predecir fallas críticas y optimizar el <strong>EVM</strong>. 15 días de implementación + 7 días de prueba de riesgo cero.</p>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-chart-line"></i> Dashboard de Ejemplo</h3>
+        <p>Visualización avanzada de activos críticos bajo estándares de <strong>Arquitectura Dimensional</strong>.</p>
+        <a href="https://github.com/emiliopalacinPMP/Proyectos-y-Datos" class="btn">Repositorio GitHub</a>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2026 P&D Analítica. Estándares PMI - PMBOK 8va Edición.</p>
+</div>
+
+</body>
+</html>
