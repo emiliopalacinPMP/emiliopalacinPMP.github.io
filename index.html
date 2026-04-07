@@ -3,209 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Emilio Palacín Gómez - PMP® Project Manager y Consultor PMO">
-    <title>Emilio Palacín Gómez | PMP® & PMO</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Fuente Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Iconos FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>P&D Analítica de Infraestructura | Emilio Palacín, PMP</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --azul-petroleo: #1A3B5D;
+            --verde-bosque: #28A745;
+            --carbon: #2C3E50;
+            --plata: #BDC3C7;
+            --azul-brillante: #2980B9;
+            --blanco: #FFFFFF;
+            --gris-tecnico: #7F8C8D;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--carbon);
+            color: var(--plata);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--plata);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--azul-petroleo);
+            max-width: 1100px;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        header h1 { color: var(--azul-petroleo); margin: 0; font-size: 2rem; font-weight: 800; }
+        header .tagline { color: var(--carbon); font-style: italic; margin-bottom: 20px; font-weight: 500; font-size: 0.95rem; }
+
+        .main-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 10px 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: rgba(26, 59, 93, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--azul-petroleo);
+            border-top: 5px solid var(--azul-brillante);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(127, 140, 141, 0.3);
+        }
+
+        /* Ajuste de foto pequeña cuadrada */
+        .profile-photo-small {
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+            border: 1px solid var(--verde-bosque);
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-header-text h2 { margin: 0; font-size: 1.1rem; line-height: 1.2; font-weight: bold; color: var(--blanco); }
+        .profile-status { color: var(--verde-bosque); font-weight: bold; font-size: 0.8rem; margin: 3px 0 0 0; }
+
+        .card-content h3 { color: var(--azul-brillante); margin-top: 0; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; }
+        .card-content p { font-size: 0.9rem; margin-bottom: 15px; }
+
+        header .btn {
+            background-color: var(--azul-petroleo);
+            color: var(--blanco);
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        header .btn-outline { background-color: transparent; border: 2px solid var(--azul-petroleo); color: var(--azul-petroleo); }
+
+        .btn-card {
+            display: block;
+            background-color: var(--verde-bosque);
+            color: var(--blanco);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .btn-outline-card { background-color: transparent; border: 2px solid var(--azul-brillante); color: var(--blanco); }
+
+        .footer { text-align: center; padding: 30px 20px; color: var(--gris-tecnico); font-size: 0.8rem; border-top: 1px solid var(--azul-petroleo); margin-top: 30px; }
+
+        @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } header { max-width: 95%; } }
+    </style>
 </head>
 <body>
 
-    <!-- MENÚ SUPERIOR -->
-    <nav>
-        <div class="container nav-container">
-            <div class="logo">EMILIO PALACÍN <span class="highlight">PMP®</span></div>
-            <ul class="nav-links">
-                <li><a href="#perfil">Perfil</a></li>
-                <li><a href="#experiencia">Trayectoria</a></li>
-                <li><a href="#formacion">Formación</a></li>
-                <li><a href="#portafolio">Portafolio</a></li>
-                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
+<header>
+    <h1>P&D Analítica de Infraestructura</h1>
+    <p class="tagline">Traducción Estratégica: Ingeniería + Data Science + PMBOK 8</p>
+    <a href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" class="btn"><i class="fab fa-linkedin"></i> Newsletter</a>
+    <a href="mailto:emiliopalacinPMP@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Contactar</a>
+</header>
 
-    <!-- ENCABEZADO (HERO) -->
-    <header class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Emilio Palacín Gómez</h1>
-                <h2>Project Manager PMP® | Consultor PMO</h2>
-                <p>Ingeniero Electricista experto en Control de Proyectos, Costos y Reporting Ejecutivo. Más de 20 años dirigiendo proyectos de Infraestructura, Energía y Tecnología.</p>
-                <div class="hero-btns">
-                    <!-- El botón ahora lleva a la sección de abajo -->
-                    <a href="#contacto" class="btn btn-primary">Contactar</a>
-                    <a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                </div>
-            </div>
-            <div class="hero-img">
-                <!-- ASEGÚRATE DE QUE TU FOTO SE LLAME perfil.jpg EN GITHUB -->
-                <img src="perfil.jpg" alt="Jesús Emilio Palacín PMP" onerror="this.style.display='none'">
+<div class="main-container">
+    <div class="card">
+        <div class="profile-section">
+            <img src="foto-epg.jpg" alt="Emilio Palacín" class="profile-photo-small">
+            <div class="profile-header-text">
+                <h2>Emilio Palacín Gómez<br>PMP</h2>
+                <p class="profile-status">Traductor Estratégico</p>
             </div>
         </div>
-    </header>
-
-    <!-- PERFIL PROFESIONAL -->
-    <section id="perfil" class="section-bg">
-        <div class="container">
-            <h2 class="section-title">Perfil Profesional</h2>
-            <p class="profile-text">
-                <strong>Project Manager certificado PMP®</strong> e Ingeniero Electricista, con sólida experiencia en la dirección, seguimiento y control de proyectos operativos y de infraestructura, así como en el soporte a <strong>Oficinas de Proyectos (PMO)</strong>.
-                <br><br>
-                Experto en control de cronograma, gestión de costos y riesgos (EVM). Me especializo en la consolidación de datos para la elaboración de reportes ejecutivos de alto nivel, utilizando herramientas modernas como <strong>Power BI, SQL y Python</strong> para apoyar la toma de decisiones estratégicas.
-            </p>
+        <div class="card-content">
+            <p>Ingeniero Electricista con +20 años de experiencia. Experto en cerrar la brecha entre gestión tradicional y analítica avanzada mediante <strong>Python</strong> y <strong>PMBOK 8</strong>.</p>
         </div>
-    </section>
+        <a href="https://www.linkedin.com/in/emiliopalacinPMP" class="btn-card btn-outline-card">Ver LinkedIn</a>
+    </div>
 
-    <!-- EXPERIENCIA (COMPLETA SEGÚN CV) -->
-    <section id="experiencia" class="container">
-        <h2 class="section-title">Trayectoria Profesional</h2>
-        
-        <div class="timeline">
-            <!-- Puesto 1 -->
-            <div class="job-card">
-                <h3>Project Manager / Consultor PMO</h3>
-                <span class="date">Ene. 2023 – Actualidad | Freelance</span>
-                <ul>
-                    <li>Soporte PMO a proyectos TI aplicando lineamientos <strong>PMBOK®</strong>.</li>
-                    <li>Automatización de reportes ejecutivos en <strong>Power BI</strong>.</li>
-                    <li>Implementación de soluciones Low-Code para trazabilidad de inventarios y control operativo.</li>
-                </ul>
-            </div>
-
-            <!-- Puesto 2 -->
-            <div class="job-card">
-                <h3>Director Administrativo / PMO</h3>
-                <span class="date">Oct. 2019 – May. 2023 | Consorcio Unión Ingema</span>
-                <ul>
-                    <li>Gestión PMO en proyecto nacional de alta complejidad.</li>
-                    <li>Control financiero y seguimiento de proyecciones de cierre.</li>
-                    <li>Diseño de tableros de seguimiento para dirección y stakeholders.</li>
-                </ul>
-            </div>
-
-            <!-- Puesto 3 (Faltaba este en tu versión anterior) -->
-            <div class="job-card">
-                <h3>Director de Proyectos / Coordinador Operativo</h3>
-                <span class="date">Sep. 1998 – Ago. 2016 | Obras y Diseños S.A.</span>
-                <ul>
-                    <li>Dirección de proyectos Oil & Gas y Energía (facturación > $75.000M).</li>
-                    <li>Liderazgo de equipos de hasta <strong>200 personas</strong>.</li>
-                    <li>Normalización operativa de contratos críticos en 53 días.</li>
-                </ul>
-            </div>
-
-            <!-- Puesto 4 (Internacional) -->
-            <div class="job-card">
-                <h3>Coordinador Operativo – Sector Litoral</h3>
-                <span class="date">Jun. 2017 – Oct. 2018 | Honduras</span>
-                <ul>
-                    <li>Optimización de rutas y cuadrillas en sector eléctrico.</li>
-                    <li>Reducción de tiempos de ciclo operativo del 20%.</li>
-                </ul>
-            </div>
+    <div class="card">
+        <div class="card-content">
+            <h3><i class="fas fa-microchip"></i> Motores de Inteligencia</h3>
+            <p>Algoritmos para predecir fallas críticas y optimizar el <strong>EVM</strong>. Implementación en 15 días con riesgo cero.</p>
         </div>
-    </section>
+        <a href="mailto:emiliopalacinPMP@gmail.com" class="btn-card">Solicitar Piloto</a>
+    </div>
 
-    <!-- FORMACIÓN ACADÉMICA (La sección que no te aparecía) -->
-    <section id="formacion" class="section-bg">
-        <div class="container">
-            <h2 class="section-title">Formación Académica y Certificaciones</h2>
-            <div class="grid-2-col">
-                <!-- Certificaciones -->
-                <div>
-                    <h2 class="section-title-left">Certificaciones</h2>
-                    <ul class="education-list">
-                        <li>
-                            <i class="fas fa-certificate" style="color:#003366"></i> 
-                            <strong>Project Management Professional (PMP®)</strong><br>
-                            PMI - Vigente hasta 03/2026
-                        </li>
-                    </ul>
-                    
-                    <h2 class="section-title-left" style="margin-top:30px">Habilidades Clave</h2>
-                    <div class="skills-wrapper">
-                        <span class="skill-tag">PMP®</span>
-                        <span class="skill-tag">PMO Governance</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Gestión de Riesgos</span>
-                        <span class="skill-tag">Earned Value (EVM)</span>
-                        <span class="skill-tag">Python & SQL</span>
-                    </div>
-                </div>
-
-                <!-- Educación -->
-                <div>
-                    <h2 class="section-title-left">Estudios</h2>
-                    <ul class="education-list">
-                        <li><strong>Ingeniero Electricista</strong><br>Universidad Tecnológica de Pereira (1993)</li>
-                        <li><strong>Bootcamp IA y Analítica Avanzada</strong><br>Cymetria (2025-2026)</li>
-                        <li><strong>Bootcamp Análisis de Datos con IA</strong><br>BETEK (2025)</li>
-                        <li><strong>Diplomado Desarrollo Apps Móviles</strong><br>Inst. Tecnisistemas (2025)</li>
-                        <li><strong>Gestión de Proyectos Solares</strong><br>Universidad de los Andes (2024)</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-content">
+            <h3><i class="fas fa-chart-line"></i> Dashboard: Subestación</h3>
+            <p>Visualización avanzada de KPIs bajo el modelo de <strong>Arquitectura Dimensional</strong>.</p>
         </div>
-    </section>
+        <a href="https://github.com/emiliopalacinPMP/Proyectos-y-Datos" class="btn-card"><i class="fab fa-github"></i> Repositorio</a>
+    </div>
+</div>
 
-    <!-- PORTAFOLIO -->
-    <section id="portafolio" class="container">
-        <h2 class="section-title">Portafolio de Control</h2>
-        <div class="portfolio-grid">
-            <!-- PROYECTO 1 -->
-            <div class="portfolio-item">
-                <div class="portfolio-img">
-                    <!-- RECUERDA: El archivo en github debe llamarse Tablero1.png -->
-                    <img src="Dashboard1.png" alt="Informe Ejecutivo" onerror="this.style.display='none'">
-                </div>
-                <div class="portfolio-info">
-                    <h3>Informe Ejecutivo de Proyecto</h3>
-                    <p>Tablero automatizado en  Python para control de índices de desempeño (SPI, CPI), Varianza y análisis financiero.</p>
-                </div>
-            </div>
-
-            <!-- PROYECTO 2 -->
-            <div class="portfolio-item">
-                <div class="portfolio-img">
-                    <img src="https://via.placeholder.com/600x350/333333/ffffff?text=Reporte+Automatizado" alt="Reporting">
-                </div>
-                <div class="portfolio-info">
-                    <h3>Automatización de Reportes</h3>
-                    <p>Integración de fuentes de datos para reportes automáticos en Excel y Power BI.</p>
-                </div>
-            </div>
-
-            <!-- PROYECTO 3 -->
-            <div class="portfolio-item">
-                <div class="portfolio-img">
-                    <img src="https://via.placeholder.com/600x350/004080/ffffff?text=App+Control+Obra" alt="App">
-                </div>
-                <div class="portfolio-info">
-                    <h3>App Low-Code para Inventarios</h3>
-                    <p>Aplicación de trazabilidad para materiales y activos en campo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PIE DE PÁGINA (CONTACTO) -->
-    <footer id="contacto">
-        <div class="container">
-            <h2>Contacto Profesional</h2>
-            <p style="margin-bottom: 20px;">Bogotá, Colombia | Disponibilidad Remota España / LATAM</p>
-            
-            <div class="contact-links">
-                <!-- Enlaces directos que SI funcionan -->
-                <a href="mailto:emiliopalacinPMP@gmail.com"><i class="fas fa-envelope"></i> emiliopalacinPMP@gmail.com</a>
-                <a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/emiliopalacinPMP" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-            <p class="copyright">&copy; 2026 Jesús Emilio Palacín Gómez.</p>
-        </div>
-    </footer>
+<div class="footer">
+    <p>&copy; 2026 P&D Analítica de Infraestructura. PMBOK 8va Edición.</p>
+</div>
 
 </body>
 </html>
