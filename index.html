@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P&D Analítica de Infraestructura | Emilio Palacín, PMP</title>
+    <title>P&D Analítica de Infraestructura | Ing. Emilio Palacín, PMP</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
+            /* Paleta institucional basada en sus archivos */
             --azul-petroleo: #1A3B5D;
             --verde-bosque: #28A745;
             --carbon: #2C3E50;
@@ -48,7 +49,7 @@
         }
 
         .card {
-            background-color: rgba(26, 59, 93, 0.2);
+            background-color: rgba(26, 59, 93, 0.2); /* Fondo basado en azul petróleo */
             padding: 25px;
             border-radius: 12px;
             border: 1px solid var(--azul-petroleo);
@@ -68,7 +69,6 @@
             border-bottom: 1px solid rgba(127, 140, 141, 0.3);
         }
 
-        /* Ajuste de foto pequeña cuadrada */
         .profile-photo-small {
             width: 45px;
             height: 45px;
@@ -79,7 +79,9 @@
         }
 
         .profile-header-text h2 { margin: 0; font-size: 1.1rem; line-height: 1.2; font-weight: bold; color: var(--blanco); }
-        .profile-status { color: var(--verde-bosque); font-weight: bold; font-size: 0.8rem; margin: 3px 0 0 0; }
+        
+        /* Ajuste 5: Traductor Estratégico en color Plata */
+        .profile-status { color: var(--plata); font-weight: bold; font-size: 0.8rem; margin: 3px 0 0 0; }
 
         .card-content h3 { color: var(--azul-brillante); margin-top: 0; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; }
         .card-content p { font-size: 0.9rem; margin-bottom: 15px; }
@@ -114,7 +116,12 @@
             margin-top: auto;
         }
 
-        .btn-outline-card { background-color: transparent; border: 2px solid var(--azul-brillante); color: var(--blanco); }
+        /* Ajuste 4: Fondo de VER LINKEDIN igual al marco de la tarjeta */
+        .btn-linked-in { 
+            background-color: solid var(--azul-brillante); 
+            border: 2px solid var(--azul-brillante); 
+            color: var(--blanco); 
+        }
 
         .footer { text-align: center; padding: 30px 20px; color: var(--gris-tecnico); font-size: 0.8rem; border-top: 1px solid var(--azul-petroleo); margin-top: 30px; }
 
@@ -125,7 +132,7 @@
 
 <header>
     <h1>P&D Analítica de Infraestructura</h1>
-    <p class="tagline">Traducción Estratégica: Ingeniería Eléctrica + Data Science + PMBOK 8</p>
+    <p class="tagline">Traducción Estratégica: Ingeniería + Data Science + PMBOK 8</p>
     <a href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" class="btn"><i class="fab fa-linkedin"></i> Newsletter</a>
     <a href="mailto:emiliopalacinPMP@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Contactar</a>
 </header>
@@ -133,16 +140,16 @@
 <div class="main-container">
     <div class="card">
         <div class="profile-section">
-            <img src="foto-epg.jpg" alt="Emilio Palacín" class="profile-photo-small">
+            <img src="foto-epg.jpg" alt="Ing. Emilio Palacín" class="profile-photo-small">
             <div class="profile-header-text">
-                <h2>Emilio Palacín Gómez<br>PMP</h2>
+                <h2>Ing. Emilio Palacín Gómez<br>PMP</h2>
                 <p class="profile-status">Traductor Estratégico</p>
             </div>
         </div>
         <div class="card-content">
-            <p>Ingeniero Eléctrico con +20 años de experiencia. Experto en cerrar la brecha entre gestión tradicional y analítica avanzada mediante <strong>Python</strong> y <strong>PMBOK 8</strong>.</p>
+            <p>Ingeniero Electricista con +20 años de experiencia. Experto en cerrar la brecha entre gestión tradicional y analítica avanzada mediante <strong>Python</strong> y <strong>PMBOK 8</strong>.</p>
         </div>
-        <a href="https://www.linkedin.com/in/emiliopalacinPMP" class="btn-card btn-outline-card">Ver LinkedIn</a>
+        <a href="https://www.linkedin.com/in/emiliopalacinPMP" class="btn-card btn-linked-in">Ver LinkedIn</a>
     </div>
 
     <div class="card">
