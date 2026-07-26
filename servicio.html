@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PMO Analítica como Servicio — Alcance y componentes</title>
+<style>
+  :root{
+    --navy:#1A2B4C; --blue:#185FA5; --teal:#0F6E56; --gold:#C9971C; --amber:#854F0B;
+    --ink:#1f2733; --grey:#5B6572; --line:#e6e9ee; --bg:#f4f6f9; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;
+       line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+  header.top{background:var(--navy);color:#fff;border-radius:16px;padding:22px 26px;margin-bottom:8px;
+             box-shadow:0 6px 22px rgba(26,43,76,.18)}
+  header.top .kicker{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  header.top h1{margin:6px 0 4px;font-size:26px;line-height:1.2}
+  header.top p{margin:0;color:#c9d3e2;font-size:14px}
+  .obj-band{display:flex;align-items:center;gap:14px;background:var(--navy);
+            color:#fff;border-radius:14px;padding:16px 22px;margin:14px 0 20px;
+            border-left:0}
+  .obj-band .ico{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:rgba(201,151,28,.18);
+           display:flex;align-items:center;justify-content:center;font-size:24px}
+  .obj-band .big{font-size:14px}
+  .obj-band .big b.gold{color:#ffe9b8}
+  .arrow-row{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:center;margin:0 0 2px}
+  @media(max-width:900px){.arrow-row{display:none}}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:26px;font-weight:900}
+  .flow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:stretch}
+  @media(max-width:900px){.flow{grid-template-columns:1fr}}
+  .stage{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+         display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(26,43,76,.05)}
+  .stage h2{margin:0;font-size:14px;color:#fff;padding:12px 16px;letter-spacing:.03em}
+  .s-in h2{background:var(--blue)} .s-eng h2{background:var(--navy)} .s-out h2{background:var(--teal)}
+  .stage .body{padding:14px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .item{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fbfcfe;
+        transition:transform .12s,box-shadow .12s,border-color .12s}
+  .item:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(26,43,76,.10);border-color:#cdd6e4}
+  .item .t{font-weight:800;font-size:13px;color:var(--navy);display:flex;align-items:center;gap:8px}
+  .item .d{font-size:12px;color:var(--grey);margin-top:3px}
+  .tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:999px}
+  .tag.pdf{background:#f6e5e5;color:#A32D2D} .tag.html{background:#e3eef7;color:var(--blue)}
+  .tag.bi{background:#fdf1d8;color:var(--amber)}
+  h3.sec{color:var(--navy);font-size:15px;margin:26px 2px 10px;border-bottom:2px solid var(--gold);
+         display:inline-block;padding-bottom:3px}
+  .q4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:700px){.q4{grid-template-columns:1fr}}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .q .qt{font-weight:800;color:var(--navy);font-size:14px}
+  .q .qd{font-size:12.5px;color:var(--grey);margin-top:2px}
+  .cad{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+  .cad .c{flex:1 1 180px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .cad .c .n{font-size:22px;font-weight:800;color:var(--navy)} .cad .c .l{font-size:12px;color:var(--grey)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:12px;color:var(--grey)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:22px;height:12px;border-radius:3px;display:inline-block}
+  footer{margin-top:26px;color:var(--grey);font-size:11.5px;text-align:center;border-top:1px solid var(--line);
+         padding-top:12px}
+ 
+  .ctaBox{display:flex;flex-wrap:wrap;gap:16px;background:linear-gradient(135deg,#1A2B4C 0%,#22355C 100%);
+          border-radius:14px;padding:20px 22px;color:#fff;align-items:center}
+  .ctaMain{flex:1 1 320px}
+  .ctaTitle{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
+  .ctaTitle:before{content:"";display:inline-block;width:0}
+  .ctaText{font-size:13px;color:#CFD8E6;line-height:1.5}
+  .ctaSide{flex:1 1 220px;border-left:1px solid rgba(255,255,255,.18);padding-left:16px}
+  .ctaModel{font-size:12.5px;color:#E7ECF4;line-height:1.5;margin-bottom:12px}
+  .ctaModel b{color:#F0C24B}
+  .ctaContact{font-size:12px;color:#AEB8CA;line-height:1.5}
+  @media(max-width:700px){.ctaSide{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ 
+  <header class="top">
+    <div class="kicker">PMO Analítica como Servicio · Alcance del servicio</div>
+    <h1>Todo el servicio, de un vistazo</h1>
+    <p>De la obra a la decisión: qué se necesita, cómo se procesa y qué recibe usted en cada corte.</p>
+  </header>
+ 
+  <div class="obj-band">
+    <div class="ico">🎯</div>
+    <div class="big">
+      <b class="gold">Objetivo:</b> anticipación, corte a corte. Ver la <b>utilidad y el desempeño
+      proyectados al cierre</b> de cada proyecto y del portafolio, para corregir mientras aún hay
+      margen — no cuando el resultado ya está cerrado.
+    </div>
+  </div>
+ 
+  <div class="arrow-row">
+    <div></div><div class="arrow">▶</div><div></div><div class="arrow">▶</div><div></div>
+  </div>
+ 
+  <div class="flow">
+ 
+    <!-- ENTRADAS -->
+    <section class="stage s-in">
+      <h2>1 · Entradas — lo que la obra aporta</h2>
+      <div class="body">
+        <div class="item">
+          <div class="t">📋 Presupuesto por proyecto</div>
+          <div class="d">El WBS con el presupuesto por capítulo, entregado una sola vez al inicio.</div>
+        </div>
+        <div class="item">
+          <div class="t">📈 Avance del corte</div>
+          <div class="d">El avance físico logrado y el costo real incurrido por capítulo, con los
+          comentarios de campo de la semana de corte.</div>
+        </div>
+        <div class="item">
+          <div class="t">🗓️ Una plantilla calibrada</div>
+          <div class="d">La obra registra en un formato simple; sin retrabajo ni software especial.</div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- PROCESO -->
+    <section class="stage s-eng">
+      <h2>2 · Proceso — análisis bajo estándar PMI</h2>
+      <div class="body">
+        <div class="item">
+          <div class="t">🧮 Desempeño de costo y plazo</div>
+          <div class="d">Valor Ganado (PMBOK): cuánto se ha ganado frente a lo gastado y lo planeado,
+          y la proyección del costo al cierre.</div>
+        </div>
+        <div class="item">
+          <div class="t">🎲 Escenarios de riesgo</div>
+          <div class="d">Simulación de miles de escenarios de costo y plazo, con la probabilidad de
+          cerrar dentro del presupuesto.</div>
+        </div>
+        <div class="item">
+          <div class="t">🔒 Ambiente controlado</div>
+          <div class="d">El procesamiento ocurre sin nube pública ni terceros; sus datos no salen de
+          un entorno bajo control.</div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ENTREGABLES -->
+    <section class="stage s-out">
+      <h2>3 · Entregables — lo que usted recibe</h2>
+      <div class="body">
+        <div class="item">
+          <div class="t"><span class="tag pdf">PDF</span> Informes por proyecto</div>
+          <div class="d">Estado en lenguaje claro, con semáforo y proyección al cierre.</div>
+        </div>
+        <div class="item">
+          <div class="t"><span class="tag html">HTML</span> Informe de portafolio</div>
+          <div class="d">La visión consolidada y cada proyecto en un solo archivo; se abre en el
+          navegador, en móvil o escritorio, sin instalación.</div>
+        </div>
+        <div class="item">
+          <div class="t"><span class="tag bi">POWER BI</span> Tablero ejecutivo</div>
+          <div class="d">Gerencia, dirección y detalle por proyecto, actualizado en cada corte.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+ 
+  <h3 class="sec">Lo que el servicio responde en cada corte</h3>
+  <div class="q4">
+    <div class="q"><div class="qt">¿Se está gastando de más?</div>
+      <div class="qd">Si el gasto es mayor al que corresponde para el avance ya logrado.</div></div>
+    <div class="q"><div class="qt">¿Se está cumpliendo el plazo?</div>
+      <div class="qd">Si el proyecto avanza al ritmo planeado o se está atrasando.</div></div>
+    <div class="q"><div class="qt">¿En cuánto va a cerrar?</div>
+      <div class="qd">El costo y el plazo proyectados al final si el desempeño no cambia.</div></div>
+    <div class="q"><div class="qt">¿Qué tan probable es el sobrecosto?</div>
+      <div class="qd">La probabilidad de terminar dentro del presupuesto y el escenario adverso.</div></div>
+  </div>
+ 
+  <h3 class="sec">Cadencia y cobertura</h3>
+  <div class="cad">
+    <div class="c"><div class="n">Cada corte</div><div class="l">Seguimiento frecuente, poco después de recibir el avance.</div></div>
+    <div class="c"><div class="n">2 niveles</div><div class="l">Cada proyecto y el portafolio consolidado.</div></div>
+    <div class="c"><div class="n">3 formatos</div><div class="l">PDF, HTML (móvil y escritorio) y Power BI.</div></div>
+    <div class="c"><div class="n">Sus datos no salen</div><div class="l">Procesamiento en ambiente controlado, sin nube pública ni terceros. Sus cifras de costo nunca salen de un entorno bajo control.</div></div>
+  </div>
+ 
+  <div class="legend">
+    <span><i style="background:#A32D2D"></i>PDF</span>
+    <span><i style="background:var(--blue)"></i>HTML</span>
+    <span><i style="background:var(--gold)"></i>Power BI</span>
+  </div>
+ 
+ 
+  <h3 class="sec">Cómo empezar</h3>
+  <div class="ctaBox">
+    <div class="ctaMain">
+      <div class="ctaTitle">El primer diagnóstico es sin costo.</div>
+      <div class="ctaText">Con un proyecto suyo en ejecución, le muestro en qué semana cierra realmente y en cuánto — con sus propios datos. Si no le dice nada que no supiera, no me debe nada.</div>
+    </div>
+    <div class="ctaSide">
+      <div class="ctaModel"><b>Servicio por suscripción</b><br>Acompañamiento por corte, sin licencias de software que comprar ni administrar.</div>
+      <div class="ctaContact">Ing. Emilio Palacín Gómez, PMP<br>linkedin.com/in/emiliopalacinPMP</div>
+    </div>
+  </div>
+ 
+  <footer>P&amp;D Infrastructure Intelligence · PMO Analítica como Servicio · Documento de alcance</footer>
+</div>
+</body>
+</html>
