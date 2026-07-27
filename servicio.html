@@ -59,7 +59,7 @@
   .legend i{width:22px;height:12px;border-radius:3px;display:inline-block}
   footer{margin-top:26px;color:var(--grey);font-size:11.5px;text-align:center;border-top:1px solid var(--line);
          padding-top:12px}
- 
+
   .ctaBox{display:flex;flex-wrap:wrap;gap:16px;background:linear-gradient(135deg,#1A2B4C 0%,#22355C 100%);
           border-radius:14px;padding:20px 22px;color:#fff;align-items:center}
   .ctaMain{flex:1 1 320px}
@@ -71,17 +71,45 @@
   .ctaModel b{color:#F0C24B}
   .ctaContact{font-size:12px;color:#AEB8CA;line-height:1.5}
   @media(max-width:700px){.ctaSide{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:12px}}
+
+  /* --- bloques añadidos --- */
+  .twoLB{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  @media(max-width:700px){.twoLB{grid-template-columns:1fr}}
+  .lb{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card)}
+  .lb .h{font-size:12px;font-weight:800;letter-spacing:.05em;color:#fff;display:inline-block;
+         padding:3px 10px;border-radius:999px;margin-bottom:8px}
+  .lb.c1 .h{background:var(--blue)} .lb.c2 .h{background:var(--teal)}
+  .lb .d{font-size:12.5px;color:var(--grey)}
+  .lb b{color:var(--navy)}
+  .lbNote{font-size:12.5px;color:var(--navy);background:#fdf1d8;border-left:3px solid var(--gold);
+          border-radius:8px;padding:10px 14px;margin-top:12px}
+  .aud{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:800px){.aud{grid-template-columns:1fr}}
+  .audc{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+  .audc h4{margin:0;font-size:13px;color:#fff;padding:9px 14px}
+  .audc.g h4{background:var(--navy)} .audc.o h4{background:var(--blue)} .audc.e h4{background:var(--teal)}
+  .audc .ab{padding:12px 14px;font-size:12px;color:var(--grey)}
+  .audc .ab .ve{color:var(--navy);font-weight:700;font-size:11px;letter-spacing:.04em}
+  .audc .ab .no{color:#A32D2D;font-weight:700;font-size:11px;letter-spacing:.04em;margin-top:8px}
+  .anti{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  @media(max-width:700px){.anti{grid-template-columns:1fr}}
+  .antic{border-radius:12px;padding:16px;text-align:center}
+  .antic.good{background:#e5f1ec;border:1px solid #bfe0d3}
+  .antic.bad{background:#f7e7e7;border:1px solid #e6c6c6}
+  .antic .wk{font-size:22px;font-weight:800;color:var(--navy)}
+  .antic.bad .wk{color:#A32D2D}
+  .antic .tx{font-size:12.5px;color:var(--grey);margin-top:4px}
 </style>
 </head>
 <body>
 <div class="wrap">
- 
+
   <header class="top">
     <div class="kicker">PMO Analítica como Servicio · Alcance del servicio</div>
     <h1>Todo el servicio, de un vistazo</h1>
     <p>De la obra a la decisión: qué se necesita, cómo se procesa y qué recibe usted en cada corte.</p>
   </header>
- 
+
   <div class="obj-band">
     <div class="ico">🎯</div>
     <div class="big">
@@ -90,13 +118,13 @@
       margen — no cuando el resultado ya está cerrado.
     </div>
   </div>
- 
+
   <div class="arrow-row">
     <div></div><div class="arrow">▶</div><div></div><div class="arrow">▶</div><div></div>
   </div>
- 
+
   <div class="flow">
- 
+
     <!-- ENTRADAS -->
     <section class="stage s-in">
       <h2>1 · Entradas — lo que la obra aporta</h2>
@@ -116,7 +144,7 @@
         </div>
       </div>
     </section>
- 
+
     <!-- PROCESO -->
     <section class="stage s-eng">
       <h2>2 · Proceso — análisis bajo estándar PMI</h2>
@@ -138,7 +166,7 @@
         </div>
       </div>
     </section>
- 
+
     <!-- ENTREGABLES -->
     <section class="stage s-out">
       <h2>3 · Entregables — lo que usted recibe</h2>
@@ -159,7 +187,7 @@
       </div>
     </section>
   </div>
- 
+
   <h3 class="sec">Lo que el servicio responde en cada corte</h3>
   <div class="q4">
     <div class="q"><div class="qt">¿Se está gastando de más?</div>
@@ -171,7 +199,7 @@
     <div class="q"><div class="qt">¿Qué tan probable es el sobrecosto?</div>
       <div class="qd">La probabilidad de terminar dentro del presupuesto y el escenario adverso.</div></div>
   </div>
- 
+
   <h3 class="sec">Cadencia y cobertura</h3>
   <div class="cad">
     <div class="c"><div class="n">Cada corte</div><div class="l">Seguimiento frecuente, poco después de recibir el avance.</div></div>
@@ -179,14 +207,45 @@
     <div class="c"><div class="n">3 formatos</div><div class="l">PDF, HTML (móvil y escritorio) y Power BI.</div></div>
     <div class="c"><div class="n">Sus datos no salen</div><div class="l">Procesamiento en ambiente controlado, sin nube pública ni terceros. Sus cifras de costo nunca salen de un entorno bajo control.</div></div>
   </div>
- 
+
   <div class="legend">
     <span><i style="background:#A32D2D"></i>PDF</span>
     <span><i style="background:var(--blue)"></i>HTML</span>
     <span><i style="background:var(--gold)"></i>Power BI</span>
   </div>
- 
- 
+
+
+
+  <h3 class="sec">El diferenciador — dos líneas base</h3>
+  <div class="twoLB">
+    <div class="lb c1"><span class="h">LB1 · CONTRACTUAL</span>
+      <div class="d">Lo comprometido con el cliente. Fija el precio y el techo del contrato: <b>la vara pública</b>.</div></div>
+    <div class="lb c2"><span class="h">LB2 · META INTERNA</span>
+      <div class="d">Una base más exigente que el contrato. Es contra la que se mide el desempeño día a día: <b>la vara interna</b>.</div></div>
+  </div>
+  <div class="lbNote">La diferencia entre ambas es su <b>margen</b>: se <b>protege</b> al ver la erosión a tiempo, y se <b>maximiza</b> al capturar cada ahorro como utilidad. Un tablero genérico controla contra una sola base — el contrato. Aquí se controla contra dos.</div>
+
+  <h3 class="sec">Cada quien ve solo lo suyo</h3>
+  <div class="aud">
+    <div class="audc g"><h4>Gerencia / Junta</h4><div class="ab">
+      <div class="ve">VE</div>Margen, reservas y techos · portafolio consolidado · proyección y probabilidad de cierre.
+      <div class="no">Acceso completo</div></div></div>
+    <div class="audc o"><h4>Obra</h4><div class="ab">
+      <div class="ve">VE</div>Avance y causa raíz por capítulo · desempeño de costo y plazo · gráficos de control.
+      <div class="no">NO VE</div>Márgenes, reservas ni el portafolio consolidado.</div></div>
+    <div class="audc e"><h4>Externo / Dueño</h4><div class="ab">
+      <div class="ve">VE</div>Cronograma y avance físico · Gantt por capítulo · semanas a la conclusión.
+      <div class="no">NO VE</div>Ningún costo, margen ni reserva.</div></div>
+  </div>
+  <div class="lbNote">Confidencialidad por construcción: un solo cálculo, filtrado por audiencia. La obra y el dueño <b>nunca ven el margen del contratista</b>.</div>
+
+  <h3 class="sec">El valor no es el ahorro. Es la anticipación.</h3>
+  <div class="anti">
+    <div class="antic good"><div class="wk">Semana 20</div><div class="tx">Se detecta a tiempo. Todavía se puede corregir.</div></div>
+    <div class="antic bad"><div class="wk">Semana 55</div><div class="tx">Se ve al cierre. Ya no hay margen que salvar.</div></div>
+  </div>
+  <div class="lbNote">En un contrato grande, adelantar la detección de un desvío varias semanas vale, por sí solo, más que el servicio completo. Esa es la diferencia entre reportar el pasado y gobernar el futuro.</div>
+
   <h3 class="sec">Cómo empezar</h3>
   <div class="ctaBox">
     <div class="ctaMain">
@@ -194,11 +253,11 @@
       <div class="ctaText">Con un proyecto suyo en ejecución, le muestro en qué semana cierra realmente y en cuánto — con sus propios datos. Si no le dice nada que no supiera, no me debe nada.</div>
     </div>
     <div class="ctaSide">
-      <div class="ctaModel"><b>Servicio por suscripción</b><br>Acompañamiento por corte, sin licencias de software que comprar ni administrar.</div>
+      <div class="ctaModel"><b>Modelo de servicio</b><br>Un cargo inicial de puesta en marcha y una mensualidad según el tamaño del portafolio. Sin licencias de software que comprar ni administrar.</div>
       <div class="ctaContact">Ing. Emilio Palacín Gómez, PMP<br>linkedin.com/in/emiliopalacinPMP</div>
     </div>
   </div>
- 
+
   <footer>P&amp;D Infrastructure Intelligence · PMO Analítica como Servicio · Documento de alcance</footer>
 </div>
 </body>
