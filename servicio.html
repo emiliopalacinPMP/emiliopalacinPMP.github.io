@@ -92,6 +92,21 @@
   .ctaContact{font-size:12px;color:#AEB8CA;line-height:1.5}
   @media(max-width:700px){.ctaSide{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:12px}}
 
+  .ctaBtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .btn{display:inline-block;font-size:13.5px;font-weight:800;text-decoration:none;
+       padding:11px 18px;border-radius:10px;transition:transform .12s,box-shadow .12s,background .12s;
+       border:1px solid transparent}
+  .btn:hover{transform:translateY(-1px)}
+  .btnGold{background:var(--gold);color:#231a02;box-shadow:0 4px 14px rgba(201,151,28,.30)}
+  .btnGold:hover{background:#DCA824;box-shadow:0 6px 18px rgba(201,151,28,.40)}
+  .btnGhost{background:transparent;color:#E7ECF4;border-color:rgba(255,255,255,.35)}
+  .btnGhost:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.55)}
+  .btn:focus-visible{outline:3px solid #F0C24B;outline-offset:2px}
+  .ctaContact a{color:#E7ECF4;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+  .ctaContact a:hover{color:#fff;border-bottom-color:#fff}
+  footer a{color:var(--navy);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)}
+  footer a:hover{color:var(--blue)}
+
   /* --- bloques añadidos --- */
   .twoLB{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
   @media(max-width:700px){.twoLB{grid-template-columns:1fr}}
@@ -271,14 +286,18 @@
     <div class="ctaMain">
       <div class="ctaTitle">El primer diagnóstico es sin costo.</div>
       <div class="ctaText">Con un proyecto suyo en ejecución, le muestro en qué semana cierra realmente y en cuánto — con sus propios datos. Si no le dice nada que no supiera, no me debe nada.</div>
+      <div class="ctaBtns">
+        <a class="btn btnGold" href="https://emiliopalacinpmp.github.io/">Solicitar el diagnóstico sin costo</a>
+        <a class="btn btnGhost" href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">Escribirme por LinkedIn</a>
+      </div>
     </div>
     <div class="ctaSide">
       <div class="ctaModel"><b>Modelo de servicio</b><br>Un cargo inicial de puesta en marcha y una mensualidad según el tamaño del portafolio. Sin licencias de software que comprar ni administrar.</div>
-      <div class="ctaContact">Ing. Emilio Palacín Gómez, PMP<br>linkedin.com/in/emiliopalacinPMP</div>
+      <div class="ctaContact">Ing. Emilio Palacín Gómez, PMP<br><a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">linkedin.com/in/emiliopalacinPMP</a></div>
     </div>
   </div>
 
-  <footer>P&amp;D Analítica de Infraestructura · PMO Analítica como Servicio · Documento de alcance</footer>
+  <footer><a href="https://emiliopalacinpmp.github.io/">P&amp;D Analítica de Infraestructura</a> · PMO Analítica como Servicio · Documento de alcance</footer>
 </div>
 </body>
 </html>
