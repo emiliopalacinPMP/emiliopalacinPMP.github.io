@@ -1,324 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1A2B4C">
-<title>Simulación simple — EVM y cierre proyectado · P&D Analítica de Infraestructura</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿En qué semana cierra realmente su proyecto? | P&D Infrastructure Intelligence</title>
+<meta property="og:title" content="¿En qué semana cierra realmente su proyecto?">
+<meta property="og:description" content="Estime en 30 segundos si su obra va a cerrar tarde — y cuánto. Diagnóstico sin costo.">
 <style>
-  :root{--navy:#1A2B4C;--teal:#0F6E56;--gold:#C9971C;--red:#A32D2D;--green:#1A7A4A;
-        --ink:#1f2733;--grey:#5B6572;--line:#e6e9ee;--bg:#f4f6f9;--card:#fff;--yel:#FFF3C4}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%;
-       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
-  .wrap{max-width:1000px;margin:0 auto;padding:18px 16px 40px}
-  header.top{background:var(--navy);color:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 6px 22px rgba(26,43,76,.18)}
-  header.top .k{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
-  header.top h1{margin:6px 0 4px;font-size:22px;line-height:1.15}
-  header.top h1 .u{color:#F0C24B}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 17px;margin-top:14px;
-        box-shadow:0 2px 10px rgba(26,43,76,.05)}
-  h2.sec{color:var(--navy);font-size:12px;margin:0 0 8px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
-  .sub{font-size:11.5px;color:var(--grey);margin:0 0 10px}
-  .aiu{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
-  .fld{flex:1 1 150px;min-width:120px}
-  .fld label{display:block;font-size:11.5px;font-weight:700;color:var(--navy);margin:0 0 4px}
-  .fld label span{font-weight:600;color:var(--grey)}
-  input,select{width:100%;padding:9px 10px;border:1px solid #d7dce3;border-radius:8px;font-size:13.5px;
-        background:var(--yel);color:var(--ink);font-family:inherit}
-  select{background:#fff}
-  input:focus,select:focus{outline:2px solid var(--gold);background:#fffdf5}
-  input.bad{border-color:var(--red)!important;background:#fdecec!important}
-  input.warn{border-color:var(--gold)!important;background:#fff6df!important}
-  #valmsg{display:none;margin-top:10px;font-size:12px;line-height:1.5;border-radius:8px;padding:8px 11px}
-  #valmsg.err{display:block;background:#fbeaea;border:1px solid #e6c9c9;color:#5a1e1e}
-  #valmsg.warnonly{display:block;background:#fdf6e6;border:1px solid #ecd9a6;color:#5c470f}
-  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
-  th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-  th{background:var(--navy);color:#fff;font-size:11px;text-align:right}
-  th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
-  .scroll{overflow-x:auto}
-  .capcard{border:1px solid var(--line);border-radius:12px;margin-bottom:9px;background:#fbfcfe;overflow:hidden}
-  .capcard>summary{list-style:none;cursor:pointer;padding:11px 14px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--navy);font-weight:700}
-  .capcard>summary::-webkit-details-marker{display:none}
-  .capcard>summary .cnum{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
-  .capcard>summary .cname{flex:1 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .capcard>summary .cmeta{flex:0 0 auto;font-weight:700;color:var(--gold);font-size:12px}
-  .capcard>summary .chev{flex:0 0 auto;color:var(--grey);font-size:18px;line-height:1;transition:transform .15s}
-  .capcard[open]>summary .chev{transform:rotate(90deg)}
-  .capcard[open]>summary{border-bottom:1px solid var(--line)}
-  .capbody{padding:12px 14px 14px}
-  .capbody .fld{margin-bottom:10px}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .btn{display:inline-block;text-decoration:none;font-family:inherit;font-size:13px;font-weight:800;padding:10px 16px;border-radius:9px;border:1px solid;cursor:pointer}
-  .btnGold{background:var(--gold);color:#1A2B4C;border-color:var(--gold)}
-  .btnGhost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
-  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;margin:2px 0 6px}
-  .lg{display:inline-flex;align-items:center;gap:6px}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-  .kpi{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fbfcfe}
-  .kpi .t{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--grey)}
-  .kpi .v{font-size:22px;font-weight:800;margin-top:3px;line-height:1.1}
-  .kpi .s{font-size:11px;color:var(--grey);margin-top:2px}
-  .v.g{color:var(--green)} .v.r{color:var(--red)} .v.n{color:var(--navy)}
-  .cta{display:flex;gap:16px;flex-wrap:wrap;background:linear-gradient(135deg,#1A2B4C,#22355C);
-       border-radius:14px;padding:16px 20px;color:#fff;align-items:center;margin-top:14px}
-  .cta .m{flex:1 1 60%;min-width:240px}.cta .h{font-size:16px;font-weight:800}
-  .cta .s{flex:1 1 30%;min-width:200px;border-left:1px solid rgba(255,255,255,.18);padding-left:16px;font-size:12px;color:#E7ECF4}
-  .ctaBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-  footer{margin-top:18px;color:var(--grey);font-size:11px;text-align:center}
+:root{
+--navy:#16243F; --navy2:#1A2B4C; --teal:#0F6E56; --red:#B03A2E; --gold:#C9971C;
+--grey:#6B7280; --line:#E3E8EF; --bg:#F4F6F8; --card:#FFFFFF; --soft:#CFD8E6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#2A2A2A;line-height:1.5;padding:20px}
+.wrap{max-width:680px;margin:auto}
+.head{background:var(--navy);border-radius:16px 16px 0 0;padding:26px 28px;color:#fff;position:relative;overflow:hidden}
+.head .kick{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.head h1{font-size:24px;font-weight:800;margin-top:8px;line-height:1.2}
+.head p{color:var(--soft);font-size:14px;margin-top:8px}
+.panel{background:var(--card);border:1px solid var(--line);border-top:none;padding:26px 28px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.field .help{font-size:11.5px;color:var(--grey);margin-bottom:7px}
+.field input[type=number]{width:100%;padding:12px 14px;border:1.5px solid var(--soft);border-radius:9px;font-size:16px;color:var(--navy);font-weight:600}
+.field input:focus{outline:none;border-color:var(--teal)}
+.suffix{position:relative}
+.suffix .u{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--grey);font-size:13px;font-weight:600}
+.btn{width:100%;background:var(--teal);color:#fff;border:none;padding:15px;border-radius:10px;font-size:16px;font-weight:800;cursor:pointer;letter-spacing:.02em}
+.btn:hover{background:#0c5c48}
+.result{background:var(--card);border:1px solid var(--line);border-top:none;border-radius:0 0 16px 16px;padding:0 28px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.result.show{max-height:1400px;padding:26px 28px}
+.verdict{border-radius:12px;padding:20px 22px;text-align:center;margin-bottom:18px}
+.verdict.bad{background:#F7E7E7;border:1px solid #E0BDBD}
+.verdict.warn{background:#FBF0D0;border:1px solid #E8D28A}
+.verdict.ok{background:#E5F1EC;border:1px solid #BFE0D3}
+.verdict .big{font-size:30px;font-weight:800;line-height:1.1}
+.verdict.bad .big{color:var(--red)} .verdict.warn .big{color:#9A7212} .verdict.ok .big{color:var(--teal)}
+.verdict .sub{font-size:14px;color:#444;margin-top:8px}
+.reading{font-size:14.5px;color:#333;line-height:1.6;margin-bottom:8px}
+.reading b{color:var(--navy)}
+.disclaim{font-size:11.5px;color:var(--grey);font-style:italic;border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.cta{background:var(--navy);border-radius:12px;padding:22px;color:#fff;margin-top:18px;text-align:center}
+.cta .t{font-size:18px;font-weight:800;margin-bottom:6px}
+.cta .d{font-size:13.5px;color:var(--soft);margin-bottom:16px}
+.cta a{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:800;padding:12px 26px;border-radius:8px;font-size:14.5px;margin:4px}
+.cta a.alt{background:transparent;border:2px solid var(--soft);color:#fff}
+.foot{text-align:center;color:var(--grey);font-size:11.5px;margin-top:20px;padding-bottom:10px}
+.foot b{color:var(--navy)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="top">
-    <div class="k">P&amp;D Analítica de Infraestructura · PMO Analítica como Servicio</div>
-    <h1>Simulación simple <span class="u">— EVM y cierre proyectado</span></h1>
-  </header>
 
-  <!-- 1 · CONTRACTUAL -->
-  <div class="card">
-    <h2 class="sec">1 · Datos contractuales</h2>
-    <div class="aiu" style="margin-bottom:12px">
-      <div class="fld" style="max-width:330px"><label>Proyecto</label><select id="proy"></select></div>
-      <div><button id="btnNueva" type="button" class="btn btnGold">＋ Proyecto nuevo</button></div>
-      <div class="fld" style="max-width:170px"><label>Administración (%)</label><input id="admin" type="number" value="15"></div>
-    </div>
-    <div id="body"></div>
+  <div class="head">
+    <div class="kick">Estimación rápida · Control por Valor Ganado</div>
+    <h1>¿En qué semana cierra realmente su proyecto?</h1>
+    <p>En 30 segundos, sin fórmulas: solo tres datos que usted ya conoce de su obra.</p>
   </div>
 
-  <!-- 2 · CORTE -->
-  <div class="card">
-    <h2 class="sec">2 · Corte</h2>
-    <div class="aiu">
-      <div class="fld" style="max-width:200px"><label>Semana de corte</label><select id="sem"></select><div id="cutd" style="font-size:10.5px;color:var(--grey);margin-top:3px"></div></div>
-      <div class="fld" style="max-width:220px"><label>EV total al corte (USD)</label><input id="ev" type="number" value="0" placeholder="0"></div>
-      <div class="fld" style="max-width:220px"><label>AC total al corte (USD)</label><input id="ac" type="number" value="0" placeholder="0"></div>
+  <div class="panel">
+    <div class="field">
+      <label>Duración contratada del proyecto</label>
+      <div class="help">¿En cuántas semanas se comprometió a entregar?</div>
+      <div class="suffix"><input type="number" id="dur" min="1" placeholder="27"><span class="u">semanas</span></div>
     </div>
-    <div id="valmsg"></div>
+
+    <div class="field">
+      <label>Avance físico real hoy</label>
+      <div class="help">¿Qué porcentaje de la obra está realmente ejecutado?</div>
+      <div class="suffix"><input type="number" id="real" min="0" max="100" placeholder="56"><span class="u">%</span></div>
+    </div>
+
+    <div class="field">
+      <label>Avance que debería llevar según el plan</label>
+      <div class="help">¿Qué porcentaje debería estar listo a esta altura, según el cronograma?</div>
+      <div class="suffix"><input type="number" id="plan" min="0" max="100" placeholder="78"><span class="u">%</span></div>
+    </div>
+
+    <button class="btn" onclick="simular()">Ver mi proyección de cierre →</button>
   </div>
 
-  <!-- 3 · GRÁFICO -->
-  <div class="card">
-    <h2 class="sec">Curva PV · EV y AC al corte</h2>
-    <div class="legend">
-      <span class="lg"><span style="width:22px;height:0;border-top:3px solid #C9971C;display:inline-block"></span><b>PV</b></span>
-      <span class="lg"><span style="width:11px;height:11px;border-radius:50%;background:#0F6E56;display:inline-block"></span><b>EV</b></span>
-      <span class="lg"><span style="width:11px;height:11px;background:#A32D2D;display:inline-block;transform:rotate(45deg)"></span><b>AC</b></span>
-      <span class="lg"><span style="width:22px;height:0;border-top:3px dashed #5B6572;display:inline-block"></span>corte</span>
-    </div>
-    <div id="chart"></div>
-    <p class="sub" id="chartnote" style="margin-top:8px"></p>
+  <div class="result" id="result"></div>
+
+  <div class="foot">
+    <b>P&amp;D Infrastructure Intelligence</b> · Ing. Emilio Palacín Gómez, PMP<br>
+    Estimación orientativa con fines ilustrativos. No sustituye un análisis con los datos reales del proyecto.
   </div>
 
-  <!-- 4 · EVM -->
-  <div class="card">
-    <h2 class="sec">Cálculos EVM</h2>
-    <div class="kpis">
-      <div class="kpi"><div class="t">BAC · presupuesto</div><div id="k_bac" class="v n">—</div><div class="s">directo + admin</div></div>
-      <div class="kpi"><div class="t">CPI · costo</div><div id="k_cpi" class="v n">—</div></div>
-      <div class="kpi"><div class="t">SPI · plazo</div><div id="k_spi" class="v n">—</div></div>
-      <div class="kpi"><div class="t">EAC · costo proyectado</div><div id="k_eac" class="v n">—</div><div id="k_eacS" class="s"></div></div>
-      <div class="kpi"><div class="t">VAC · vs presupuesto</div><div id="k_vac" class="v n">—</div></div>
-      <div class="kpi"><div class="t">Cierre proyectado</div><div id="k_fin" class="v n">—</div><div id="k_finS" class="s"></div></div>
-    </div>
-  </div>
-
-  <div class="cta">
-    <div class="m"><div class="h">El primer diagnóstico es sin costo.</div>
-      <div class="ctaBtns">
-        <a class="btn btnGold" href="https://emiliopalacinpmp.github.io/" target="_blank" rel="noopener">Solicitar el diagnóstico sin costo</a>
-        <a class="btn btnGhost" href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">Escribirme por LinkedIn</a>
-      </div></div>
-    <div class="s"><b>Ing. Emilio Palacín Gómez, PMP</b><br>P&amp;D Analítica de Infraestructura<br>www.linkedin.com/in/emiliopalacinPMP</div>
-  </div>
-
-  <footer>P&amp;D Analítica de Infraestructura · Valor Ganado bajo PMBOK 8ª edición · Herramienta de simulación
-    <div style="margin:10px auto 0;max-width:900px;font-size:10.5px;line-height:1.55;color:var(--grey);text-align:left;border-top:1px solid var(--line);padding-top:10px">
-      <b>Aviso legal.</b> Esta herramienta entrega una <b>aproximación de carácter ilustrativo</b>. Sus resultados son estimaciones
-      direccionales que dependen enteramente de los datos ingresados y <b>requieren interpretación profesional</b>; no constituyen
-      asesoría, dictamen ni garantía de resultado. P&amp;D Analítica de Infraestructura y el Ing. Emilio Palacín Gómez <b>no asumen
-      responsabilidad</b> por decisiones, acciones u omisiones derivadas de su uso.
-      &copy; P&amp;D Analítica de Infraestructura — Todos los derechos reservados. <b>Prohibida su reproducción, copia o distribución</b>,
-      total o parcial, por cualquier medio, sin autorización escrita del autor.
-    </div>
-  </footer>
 </div>
 
 <script>
-(function(){
-  var $=function(id){return document.getElementById(id)};
-  var fmt=function(n){return isFinite(n)?Math.round(n).toLocaleString('es-CO'):'—'};
-  var sign=function(v){return (v<0?'−$':'$')+fmt(Math.abs(v));};
-  var days=function(a,b){return (new Date(b)-new Date(a))/86400000};
-  var PROY={
-    'prueba-01 · Subestación 34.5 kV':{admin:'15',sem:'20',caps:[
-      ['Ingeniería y diseño',40000,'2026-02-01','2026-04-15',100,43500],
-      ['Suministro de equipos',180000,'2026-03-01','2026-07-31',50,120500],
-      ['Obra civil',70000,'2026-03-15','2026-08-15',40,36500],
-      ['Montaje electromecánico',70000,'2026-06-01','2026-10-15',15,13000],
-      ['Pruebas y energización',20000,'2026-10-01','2026-11-30',0,0]]},
-    'prueba-02 · Datacenter Tier III':{admin:'15',sem:'21',caps:[
-      ['Ingeniería y permisos',50000,'2026-01-05','2026-03-01',90,54500],
-      ['Suministro de equipos',220000,'2026-02-01','2026-06-30',40,117500],
-      ['Obra civil / adecuaciones',120000,'2026-03-01','2026-08-31',30,47000],
-      ['Instalación MEP',80000,'2026-05-01','2026-10-31',10,10000],
-      ['Puesta en marcha',30000,'2026-10-01','2026-12-15',0,0]]},
-    'prueba-03 · Planta solar FV 500 kWp':{admin:'15',sem:'18',caps:[
-      ['Ingeniería y trámites',35000,'2026-02-01','2026-03-31',100,42500],
-      ['Suministro paneles e inversores',240000,'2026-03-01','2026-06-15',60,188000],
-      ['Estructura y montaje',90000,'2026-04-01','2026-08-31',35,41000],
-      ['Cableado e interconexión',40000,'2026-06-01','2026-09-30',10,9500],
-      ['Pruebas y puesta en marcha',15000,'2026-09-15','2026-10-31',0,0]]}
-  };
-  var DEF='prueba-02 · Datacenter Tier III';
+function simular(){
+  var dur = parseFloat(document.getElementById('dur').value);
+  var real = parseFloat(document.getElementById('real').value);
+  var plan = parseFloat(document.getElementById('plan').value);
+  var box = document.getElementById('result');
 
-  // construir 5 tarjetas de capítulo (colapsables)
-  var body=$('body');
-  for(var i=0;i<5;i++){
-    var dt=document.createElement('details'); dt.className='capcard'; dt.id='cap'+i; if(i===0)dt.open=true;
-    dt.innerHTML='<summary><span class="cnum">'+(i+1)+'</span>'+
-      '<span class="cname" id="ln'+i+'">Capítulo '+(i+1)+'</span>'+
-      '<span class="cmeta" id="lm'+i+'"></span><span class="chev">›</span></summary>'+
-      '<div class="capbody">'+
-        '<div class="fld"><label>Capítulo</label><input id="n'+i+'" value="" placeholder="Nombre del capítulo"></div>'+
-        '<div class="fld"><label>Costo directo (USD)</label><input id="d'+i+'" type="number" placeholder="0"></div>'+
-        '<div class="row2"><div class="fld" style="margin-bottom:0"><label>Inicio</label><input id="i'+i+'" type="date"></div>'+
-        '<div class="fld" style="margin-bottom:0"><label>Fin</label><input id="f'+i+'" type="date"></div></div>'+
-      '</div>';
-    body.appendChild(dt);
+  if(isNaN(dur) || dur<=0 || isNaN(real) || isNaN(plan) || plan<=0){
+    box.className='result show';
+    box.innerHTML='<div class="verdict warn"><div class="big">Faltan datos</div><div class="sub">Complete los tres campos para ver la proyección.</div></div>';
+    return;
   }
 
-  var pvAt=function(rows,t){var s=0;for(var i=0;i<rows.length;i++){var r=rows[i];
-    if(!r.ini||!r.fin){continue;} var f=days(r.ini,r.fin); if(f<=0){s+=r.d;continue;}
-    s+=r.d*Math.max(0,Math.min(1, days(r.ini,t)/f)); } return s; };
+  // Ritmo relativo: cuánto avanza la obra frente a lo planeado.
+  // (el detalle metodológico se resuelve en el diagnóstico, no aquí)
+  var ritmo = real / plan;
+  // El atraso no compone al 100%: parte del trabajo pendiente suele absorber el rezago.
+  // Factor moderado para una estimación realista (no el peor caso teórico).
+  var cierreEstimado = Math.round(dur * (1 + (1 - ritmo) * 0.75));
+  var atraso = cierreEstimado - Math.round(dur);
+  var pctAtraso = Math.round((1 - ritmo) * 100);
 
-  function validate(BAC){
-    var errs=[], warns=[], hasErr=false, hasWarn=false;
-    for(var i=0;i<5;i++){
-      var dEl=$('d'+i),iEl=$('i'+i),fEl=$('f'+i);
-      [dEl,iEl,fEl].forEach(function(e){e.classList.remove('bad','warn');});
-      var nm=$('n'+i).value||('Cap '+(i+1));
-      if(dEl.value===''&&iEl.value===''&&fEl.value==='') continue;
-      var d=parseFloat(dEl.value), ini=iEl.value, fin=fEl.value;
-      if(dEl.value!==''&&(!isFinite(d)||d<0)){dEl.classList.add('bad');errs.push(nm+': costo inválido');hasErr=true;$('cap'+i).open=true;}
-      if(ini&&fin&&(new Date(fin)<=new Date(ini))){iEl.classList.add('bad');fEl.classList.add('bad');errs.push(nm+': fin ≤ inicio');hasErr=true;$('cap'+i).open=true;}
-    }
-    var evEl=$('ev'), acEl=$('ac'); evEl.classList.remove('bad','warn'); acEl.classList.remove('bad','warn');
-    var ev=parseFloat(evEl.value), ac=parseFloat(acEl.value);
-    if(evEl.value!==''&&isFinite(ev)&&ev<0){evEl.classList.add('bad');errs.push('EV negativo');hasErr=true;}
-    if(acEl.value!==''&&isFinite(ac)&&ac<0){acEl.classList.add('bad');errs.push('AC negativo');hasErr=true;}
-    if(isFinite(ev)&&ev>0&&BAC&&ev>BAC*1.001){evEl.classList.add('warn');warns.push('EV mayor al BAC');hasWarn=true;}
-    if(isFinite(ac)&&ac>0&&(evEl.value===''||(isFinite(ev)&&ev===0))){acEl.classList.add('warn');warns.push('costo sin avance (AC>0, EV=0)');hasWarn=true;}
-    if(isFinite(ev)&&ev>0&&(acEl.value===''||(isFinite(ac)&&ac===0))){evEl.classList.add('warn');warns.push('avance sin costo (EV>0, AC=0)');hasWarn=true;}
-    var el=$('valmsg'); el.className='';
-    if(hasErr){el.className='err';el.innerHTML='⛔ <b>Corregir:</b> '+errs.join(' · ')+(warns.length?(' &nbsp;·&nbsp; ⚠ '+warns.join(' · ')):'');}
-    else if(hasWarn){el.className='warnonly';el.innerHTML='⚠ <b>Revisar:</b> '+warns.join(' · ');}
+  var cls, big, sub, lectura;
+
+  if(ritmo >= 0.98){
+    cls='ok';
+    big='En ritmo';
+    sub='Su obra avanza al paso planeado — o mejor.';
+    lectura='Con estos datos, el proyecto proyecta cerrar cerca de lo contratado (semana '+cierreEstimado+'). El reto ahora es <b>sostener</b> el desempeño y no perder la holgura ganada. Aun así, el ritmo global puede esconder un frente específico que ya se está atrasando: eso solo se ve capítulo por capítulo.';
+  } else if(ritmo >= 0.9){
+    cls='warn';
+    big='≈ '+atraso+' semana'+(atraso===1?'':'s')+' tarde';
+    sub='Cierre proyectado: semana '+cierreEstimado+' (contratado: '+Math.round(dur)+').';
+    lectura='Su obra va a un <b>'+pctAtraso+'% por debajo</b> del ritmo planeado. Todavía es corregible, pero el margen se está estrechando. Lo crítico no es el atraso promedio: es <b>en qué frente nació</b> y desde cuándo era medible — porque ahí es donde se actúa.';
+  } else {
+    cls='bad';
+    big='≈ '+atraso+' semanas tarde';
+    sub='Cierre proyectado: semana '+cierreEstimado+' (contratado: '+Math.round(dur)+').';
+    lectura='Su obra va a un <b>'+pctAtraso+'% por debajo</b> del ritmo planeado. A este paso, el proyecto no cierra en el plazo contratado, y cada semana que pasa sin identificar la <b>causa raíz por capítulo</b> hereda el atraso al resto de la obra. La buena noticia: si el desvío ya es medible, todavía hay ventana para reaccionar.';
   }
 
-  function calc(){
-    // rótulos de las tarjetas (nombre + costo) visibles al colapsar
-    for(var j=0;j<5;j++){
-      var nm=$('n'+j).value.trim(); $('ln'+j).textContent=nm||('Capítulo '+(j+1));
-      var dv=parseFloat($('d'+j).value); $('lm'+j).textContent=(isFinite(dv)&&dv>0)?('$'+fmt(dv)):'';
-    }
-    var admin=parseFloat($('admin').value)/100||0;
-    var starts0=[], rows=[], Directo=0, BAC=0, planFinishMs=null;
-    for(var i=0;i<5;i++){
-      var d=parseFloat($('d'+i).value)||0; if(d<=0) continue;
-      var ini=$('i'+i).value, fin=$('f'+i).value, dl=d*(1+admin);
-      Directo+=d; BAC+=dl;
-      rows.push({d:dl,ini:ini,fin:fin});
-      if(ini) starts0.push(+new Date(ini));
-      if(fin){var fm=+new Date(fin); if(planFinishMs==null||fm>planFinishMs)planFinishMs=fm;}
-    }
-    validate(BAC);
-    var t0s=starts0.length?Math.min.apply(null,starts0):(+new Date());
-    var sem=Math.max(0,parseFloat($('sem').value)||0);
-    var cut=new Date(t0s+sem*7*86400000);
-    $('cutd').textContent='Semana '+sem+' → '+cut.toLocaleDateString('es-CO',{year:'numeric',month:'short',day:'numeric'});
-    var PVc=pvAt(rows,cut);
-    var EV=parseFloat($('ev').value)||0, AC=parseFloat($('ac').value)||0;
-    chart(rows,cut,EV,AC,t0s,planFinishMs,sem);
-    // EVM
-    var CPI=AC>0?EV/AC:null, SPI=PVc>0?EV/PVc:null;
-    var EAC=CPI?(AC+(BAC-EV)/CPI):BAC, VAC=BAC-EAC;
-    $('k_bac').textContent='$'+fmt(BAC);
-    $('k_cpi').textContent=CPI?CPI.toFixed(2):'—'; $('k_cpi').className='v '+(CPI==null?'n':(CPI<1?'r':'g'));
-    $('k_spi').textContent=SPI?SPI.toFixed(2):'—'; $('k_spi').className='v '+(SPI==null?'n':(SPI<1?'r':'g'));
-    $('k_eac').textContent='$'+fmt(EAC); $('k_eac').className='v '+(EAC>BAC*1.001?'r':'g');
-    $('k_eacS').textContent=(VAC<0?'+$'+fmt(-VAC)+' sobre BAC':'$'+fmt(VAC)+' bajo BAC');
-    $('k_vac').textContent=sign(VAC); $('k_vac').className='v '+(VAC<0?'r':'g');
-    // cierre proyectado (proyección por SPI)
-    var projFinishMs=(planFinishMs&&SPI&&SPI>0)?(t0s+(planFinishMs-t0s)/SPI):null;
-    var delayW=(projFinishMs&&planFinishMs)?Math.round((projFinishMs-planFinishMs)/(7*86400000)):null;
-    $('k_fin').textContent=projFinishMs?new Date(projFinishMs).toLocaleDateString('es-CO',{year:'numeric',month:'short',day:'numeric'}):'—';
-    $('k_fin').className='v '+(delayW==null?'n':(delayW>0?'r':'g'));
-    $('k_finS').textContent=delayW==null?'':(delayW>0?(delayW+' sem. tarde'):(delayW<0?(-delayW+' sem. antes'):'en plazo'));
-  }
+  box.className='result show';
+  box.innerHTML =
+    '<div class="verdict '+cls+'"><div class="big">'+big+'</div><div class="sub">'+sub+'</div></div>'+
+    '<div class="reading">'+lectura+'</div>'+
+    '<div class="disclaim">Esta es una estimación orientativa a partir de tres cifras globales. El número real —y, sobre todo, <b>en qué capítulo se origina el desvío y cuándo se volvió detectable</b>— exige el desempeño real de la obra, semana a semana. Eso es justo lo que entrega el diagnóstico.</div>'+
+    '<div class="cta"><div class="t">¿Quiere el número real, con sus datos?</div>'+
+    '<div class="d">El primer diagnóstico es sin costo. Con un proyecto suyo, le muestro en qué semana cierra de verdad, en cuánto, y en qué frente está el problema.</div>'+
+    '<a href="mailto:emiliopalacinPMP@gmail.com?subject=Solicito%20diagnóstico%20sin%20costo">Solicitar diagnóstico</a>'+
+    '<a class="alt" href="https://www.linkedin.com/in/emiliopalacinPMP">Hablar por LinkedIn</a></div>';
 
-  function chart(rows,cut,EV,AC,t0,planFinishMs,sem){
-    var t1e=Math.max(planFinishMs?planFinishMs:0, +cut);
-    if(!(t1e>t0)){ $('chart').innerHTML=''; return; }
-    var W=1000,H=320,mL=64,mR=18,mT=16,mB=40, pw=W-mL-mR, ph=H-mT-mB;
-    var PVcut=pvAt(rows,cut), PVend=pvAt(rows,new Date(t1e));
-    var ymax=Math.max(EV,AC,PVend)*1.12||1;
-    var X=function(t){return mL+(+new Date(t)-t0)/(t1e-t0)*pw;},
-        Y=function(v){return mT+ph-(v/ymax)*ph;};
-    var g='';
-    for(var k=0;k<=4;k++){var yv=ymax*k/4, y=Y(yv);
-      g+='<line x1="'+mL+'" y1="'+y+'" x2="'+(W-mR)+'" y2="'+y+'" stroke="#e6e9ee"/>';
-      g+='<text x="'+(mL-8)+'" y="'+(y+3)+'" fill="#5B6572" font-size="11" text-anchor="end">$'+fmt(yv)+'</text>';}
-    var bp=[]; rows.forEach(function(r){if(r.ini)bp.push(+new Date(r.ini)); if(r.fin)bp.push(+new Date(r.fin));});
-    bp.push(t0,t1e); bp=bp.filter(function(x){return x>=t0&&x<=t1e;}).sort(function(a,b){return a-b;});
-    var pvpts=bp.map(function(t){return X(t).toFixed(1)+','+Y(pvAt(rows,new Date(t))).toFixed(1);});
-    var pvLine='<polyline points="'+pvpts.join(' ')+'" fill="none" stroke="#C9971C" stroke-width="2.5"/>';
-    var xc=X(cut);
-    var cutLine='<line x1="'+xc+'" y1="'+mT+'" x2="'+xc+'" y2="'+(mT+ph)+'" stroke="#5B6572" stroke-width="1.3" stroke-dasharray="5 4"/>'+
-      '<text x="'+xc+'" y="'+(mT-4)+'" fill="#5B6572" font-size="10.5" font-weight="700" text-anchor="middle">corte · sem '+sem+'</text>';
-    var pts='<circle cx="'+xc+'" cy="'+Y(PVcut)+'" r="4.5" fill="#C9971C" stroke="#fff" stroke-width="1.5"/>'+
-      '<circle cx="'+xc+'" cy="'+Y(EV)+'" r="6.5" fill="#0F6E56" stroke="#fff" stroke-width="1.5"/>'+
-      '<rect x="'+(xc-6.5)+'" y="'+(Y(AC)-6.5)+'" width="13" height="13" fill="#A32D2D" stroke="#fff" stroke-width="1.5" transform="rotate(45 '+xc+' '+Y(AC)+')"/>';
-    var mon=function(t){return new Date(t).toLocaleDateString('es-CO',{month:'short',year:'2-digit'});};
-    var ax='<text x="'+mL+'" y="'+(H-14)+'" fill="#5B6572" font-size="11" text-anchor="start">'+mon(t0)+'</text>'+
-      '<text x="'+(W-mR)+'" y="'+(H-14)+'" fill="#5B6572" font-size="11" text-anchor="end">'+mon(t1e)+'</text>';
-    $('chart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="display:block">'+g+pvLine+cutLine+pts+ax+'</svg>';
-    $('chartnote').innerHTML='Semana '+sem+' (corte): PV $'+fmt(PVcut)+' · EV $'+fmt(EV)+' · AC $'+fmt(AC)+'.';
-  }
-
-  // selector + semanas
-  var sel=$('proy');
-  Object.keys(PROY).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=k;sel.appendChild(o);});
-  var semSel=$('sem');
-  for(var w=0;w<=60;w++){var o=document.createElement('option');o.value=w;o.textContent='Semana '+w;semSel.appendChild(o);}
-
-  function loadProy(k){
-    var p=PROY[k]; if(!p) return;
-    $('admin').value=p.admin||'15'; $('sem').value=p.sem;
-    var adm=parseFloat(p.admin||'15')/100, ev=0, ac=0;
-    for(var i=0;i<5;i++){
-      var c=p.caps[i]||['','','','','',''];
-      $('n'+i).value=c[0]||''; $('d'+i).value=(c[1]===''||c[1]==null?'':c[1]);
-      $('i'+i).value=c[2]||''; $('f'+i).value=c[3]||'';
-      var d=parseFloat(c[1])||0, av=(parseFloat(c[4])||0)/100, a=parseFloat(c[5])||0;
-      ev+=d*(1+adm)*av; ac+=a;
-    }
-    $('ev').value=Math.round(ev); $('ac').value=Math.round(ac);
-    calc();
-  }
-  sel.value=DEF;
-  sel.addEventListener('change',function(){ loadProy(this.value); });
-  $('btnNueva').addEventListener('click',function(){
-    $('admin').value='15'; $('sem').value='0'; $('ev').value=''; $('ac').value='';
-    for(var i=0;i<5;i++){ ['n','d','i','f'].forEach(function(pf){$(pf+i).value='';}); $('cap'+i).open=true; }
-    sel.selectedIndex=-1; calc(); $('n0').focus();
-    $('body').scrollIntoView({behavior:'smooth',block:'start'});
-  });
-  ['admin','ev','ac'].forEach(function(id){$(id).addEventListener('input',calc);});
-  $('sem').addEventListener('change',calc);
-  for(var i=0;i<5;i++){['n','d','i','f'].forEach(function(pf){$(pf+i).addEventListener('input',calc);});}
-  loadProy(DEF);
-})();
+  box.scrollIntoView({behavior:'smooth', block:'start'});
+}
 </script>
 </body>
 </html>
