@@ -23,183 +23,150 @@
 <meta name="twitter:image" content="https://emiliopalacinpmp.github.io/og-servicio.png">
 <title>Control de Valor Ganado para Infraestructura | Ing. Emilio Palacín, PMP</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<title>Control de Valor Ganado para Infraestructura | Ing. Emilio Palacín, PMP</title>
 <style>
-:root {
---azul-petroleo: #1A3B5D;
---verde-bosque: #0F6E56;
---carbon: #2C3E50;
---plata: #BDC3C7;
---azul-brillante: #2980B9;
---dorado: #C9971C;
---blanco: #FFFFFF;
---gris-tecnico: #7F8C8D;
-}
-body {
-font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-background-color: var(--carbon);
-color: var(--plata);
-margin: 0;
-line-height: 1.6;
-}
-header {
-background-color: var(--plata);
-padding: 40px 24px;
-text-align: center;
-border-bottom: 4px solid var(--azul-petroleo);
-max-width: 1100px;
-margin: 20px auto;
-border-radius: 12px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-header h1 { color: var(--azul-petroleo); margin: 0 0 6px 0; font-size: 1.9rem; font-weight: 800; line-height:1.2; }
-header .tagline { color: var(--carbon); margin-bottom: 22px; font-weight: 500; font-size: 1rem; }
-header .tagline strong { color: var(--verde-bosque); }
-.main-container {
-max-width: 1150px;
-margin: auto;
-padding: 10px 20px;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-gap: 20px;
-}
-.card {
-background-color: rgba(26, 59, 93, 0.2);
-padding: 25px;
-border-radius: 12px;
-border: 1px solid var(--azul-petroleo);
-border-top: 5px solid var(--azul-brillante);
-box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-.card.sim { border-top-color: var(--dorado); }
-.profile-section {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 15px;
-padding-bottom: 10px;
-border-bottom: 1px solid rgba(127, 140, 141, 0.3);
-}
-.profile-photo-small {
-width: 45px;
-height: 45px;
-border-radius: 4px;
-border: 1px solid var(--azul-brillante);
-object-fit: cover;
-display: block;
-}
-.profile-header-text h2 { margin: 0; font-size: 1.1rem; line-height: 1.2; font-weight: bold; color: var(--blanco); }
-.profile-status { color: var(--plata); font-weight: bold; font-size: 0.8rem; margin: 3px 0 0 0; }
-.card-content h3 { color: var(--azul-brillante); margin-top: 0; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; }
-.card.sim .card-content h3 { color: var(--dorado); }
-.card-content p { font-size: 0.9rem; margin-bottom: 15px; }
-header .btn {
-background-color: var(--azul-petroleo);
-color: var(--blanco);
-padding: 10px 24px;
-text-decoration: none;
-border-radius: 6px;
-font-weight: bold;
-display: inline-block;
-margin: 5px;
-font-size: 0.85rem;
-}
-header .btn-primary { background-color: var(--verde-bosque); }
-header .btn-sim { background-color: var(--dorado); color: var(--carbon); }
-header .btn-outline { background-color: var(--azul-brillante); border: 2px solid var(--azul-brillante); color: var(--blanco); }
-.btn-card {
-display: block;
-background-color: var(--azul-petroleo);
-color: var(--blanco);
-padding: 10px 20px;
-text-decoration: none;
-border-radius: 6px;
-font-weight: bold;
-transition: 0.3s;
-text-transform: uppercase;
-font-size: 0.8rem;
-text-align: center;
-margin-top: auto;
-}
-.btn-card:hover { background-color: var(--azul-brillante); }
-.btn-card.destacado { background-color: var(--verde-bosque); }
-.btn-card.sim { background-color: var(--dorado); color: var(--carbon); }
-.btn-linked-in {
-background-color: rgba(26, 59, 93, 0.4);
-border: 2px solid var(--azul-brillante);
-color: var(--blanco);
-}
-.btn:focus-visible, .btn-card:focus-visible { outline: 3px solid var(--dorado); outline-offset: 3px; }
-.alt-contacto { margin: 14px 0 0; font-size: 0.82rem; color: var(--carbon); }
-.alt-contacto a { color: var(--azul-petroleo); font-weight: 700; }
-.alt-card { font-size: 0.8rem; color: var(--plata); margin: 0 0 12px; }
-.alt-card a { color: var(--dorado); font-weight: 700; }
-.footer { text-align: center; padding: 30px 20px; color: var(--gris-tecnico); font-size: 0.8rem; border-top: 1px solid var(--azul-petroleo); margin-top: 30px; }
-@media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } header { max-width: 95%; } }
+  :root{
+    --navy:#1A2B4C; --gold:#C9971C; --ambar:#8a6410;
+    --ink:#1f2733; --grey:#5B6572; --line:#e6e9ee; --bg:#f4f6f9; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1150px;margin:0 auto;padding:22px 20px 50px}
+
+  header.top{background:var(--navy);color:#fff;border-radius:16px 16px 0 0;padding:34px 30px 28px;
+             text-align:center;position:relative;overflow:hidden;box-shadow:0 6px 22px rgba(26,43,76,.18)}
+  header.top:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--gold)}
+  .kicker{font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--gold);margin-bottom:10px}
+  header.top h1{margin:0 0 10px;font-size:1.85rem;line-height:1.22;font-weight:800}
+  .tagline{margin:0 auto 22px;max-width:760px;color:#C7D2DC;font-size:.98rem}
+  .tagline b{color:#fff}
+
+  .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .btn{display:inline-block;padding:11px 20px;border-radius:9px;text-decoration:none;
+       font-weight:800;font-size:.86rem;border:1.5px solid transparent;
+       transition:transform .12s,background .12s,border-color .12s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--gold);color:#231a02;box-shadow:0 4px 14px rgba(201,151,28,.32)}
+  .btn-primary:hover{background:#DCA824}
+  .btn-solid{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.30)}
+  .btn-solid:hover{background:rgba(255,255,255,.22)}
+  .btn-ghost{background:transparent;color:#C7D2DC;border-color:rgba(255,255,255,.28)}
+  .btn-ghost:hover{background:rgba(255,255,255,.10);color:#fff}
+  .btn:focus-visible,.btn-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+  .alt-contacto{margin:16px 0 0;font-size:.8rem;color:#9FB0C0}
+  .alt-contacto a{color:#E7ECF4;font-weight:700;text-decoration:none;
+                  border-bottom:1px solid rgba(255,255,255,.35)}
+  .alt-contacto a:hover{border-bottom-color:#fff}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--navy);
+        border-radius:14px;padding:20px 20px 18px;display:flex;flex-direction:column;
+        box-shadow:0 2px 10px rgba(26,43,76,.05)}
+  .card.oro{border-top-color:var(--gold)}
+  .card h3{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:800}
+  .card.oro h3{color:var(--ambar)}
+  .card p{font-size:.87rem;color:var(--grey);margin:0 0 12px}
+  .card p b{color:var(--navy)}
+  .foot{margin-top:auto}
+
+  .perfil{display:flex;align-items:center;gap:12px;padding-bottom:12px;margin-bottom:12px;
+          border-bottom:1px solid var(--line)}
+  .perfil img{width:52px;height:52px;border-radius:8px;object-fit:cover;border:1px solid var(--line)}
+  .perfil .n{margin:0;font-size:.95rem;font-weight:800;color:var(--navy);line-height:1.25}
+  .perfil .r{margin:2px 0 0;font-size:.76rem;color:var(--grey);font-weight:600}
+
+  .btn-card{display:block;text-align:center;text-decoration:none;font-weight:800;
+            font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;
+            padding:11px 16px;border-radius:9px;background:var(--navy);color:#fff;
+            border:1.5px solid var(--navy);transition:background .12s,transform .12s}
+  .btn-card:hover{background:#24406e;transform:translateY(-1px)}
+  .btn-card.oro{background:var(--gold);border-color:var(--gold);color:#231a02}
+  .btn-card.oro:hover{background:#DCA824}
+  .btn-card.linea{background:transparent;color:var(--navy)}
+  .btn-card.linea:hover{background:#eef2f7}
+
+  .nota{font-size:.79rem;color:var(--grey);margin:0 0 12px}
+  .nota a{color:var(--navy);font-weight:700}
+
+  footer{border-top:4px solid var(--gold);background:var(--navy);color:#C7D2DC;
+         border-radius:0 0 14px 14px;padding:16px 20px;text-align:center;font-size:.78rem;margin-top:26px}
+  footer b{color:#fff}
+  @media(max-width:760px){ header.top h1{font-size:1.45rem} .wrap{padding:14px 14px 40px} }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-<h1>Proteja el margen de sus obras — y recupere el que hoy se escapa</h1>
-<p class="tagline">Control de <strong>Valor Ganado</strong> bajo estándar PMI, corte a corte:<br>sepa en qué semana cierra realmente cada proyecto y en cuánto, a tiempo para corregir.</p>
-<a href="https://calendly.com/emiliopalacin/30min" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-envelope"></i> Agendar diagnóstico sin costo</a>
-<a href="simulador.html" class="btn btn-sim"><i class="fas fa-calculator"></i> Probar el simulador</a>
-<a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-<a href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" target="_blank" rel="noopener" class="btn btn-outline"><i class="fas fa-newspaper"></i> Newsletter</a>
-<p class="alt-contacto">O escríbame directo: <a href="mailto:emiliopalacinPMP@gmail.com">emiliopalacinPMP@gmail.com</a>
-&nbsp;·&nbsp; <a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">mensaje por LinkedIn</a></p>
-</header>
+  <header class="top">
+    <div class="kicker">P&amp;D Analítica de Infraestructura · PMO Analítica como Servicio</div>
+    <h1>Proteja el margen de sus obras — y recupere el que hoy se escapa</h1>
+    <p class="tagline">Control de <b>Valor Ganado</b> bajo estándar PMI, corte a corte: sepa en qué semana
+    cierra realmente cada proyecto y en cuánto, a tiempo para corregir.</p>
 
-<div class="main-container">
+    <div class="btns">
+      <a class="btn btn-primary" href="https://calendly.com/emiliopalacin/30min" target="_blank" rel="noopener">Agendar diagnóstico sin costo</a>
+      <a class="btn btn-solid" href="simulador.html">Probar el simulador</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" target="_blank" rel="noopener">Newsletter</a>
+    </div>
 
-<div class="card">
-<div class="profile-section">
-<img src="foto-epg.jpg" alt="Ing. Emilio Palacín" class="profile-photo-small">
-<div class="profile-header-text">
-<h2>Ing. Emilio Palacín Gómez<br>PMP</h2>
-<p class="profile-status">Control de proyectos de infraestructura</p>
-</div>
-</div>
-<div class="card-content">
-<p>Ingeniero Electricista con más de 20 años en proyectos de infraestructura. Ayudo a la dirección a <strong>ver el desvío a tiempo</strong> —costo y plazo por capítulo— para corregir mientras el margen todavía se puede salvar.</p>
-</div>
-<a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener" class="btn-card btn-linked-in">Ver perfil</a>
-</div>
+    <p class="alt-contacto">O escríbame directo:
+      <a href="mailto:emiliopalacinPMP@gmail.com">emiliopalacinPMP@gmail.com</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">mensaje por LinkedIn</a></p>
+  </header>
 
-<div class="card">
-<div class="card-content">
-<h3><i class="fas fa-shield-halved"></i> El servicio, de un vistazo</h3>
-<p>Qué aporta la obra, qué se analiza en cada corte y qué recibe usted: informe, portafolio y tablero ejecutivo. Sus datos nunca salen de un entorno controlado.</p>
-</div>
-<a href="servicio.html" class="btn-card destacado">Ver alcance del servicio</a>
-</div>
+  <div class="grid">
 
-<div class="card sim">
-<div class="card-content">
-<h3><i class="fas fa-calculator"></i> Simulador EVM</h3>
-<p>Pruébelo usted mismo: cargue un proyecto (o use un ejemplo) y vea la curva PV, el valor ganado y el costo real al corte, el BAC, CPI/SPI y en qué fecha y a qué costo cerraría. Corre en su navegador; nada se envía.</p>
-<p style="font-size:0.85rem;color:var(--plata);margin:0"><strong>¿Prefiere que lo haga yo con sus datos?</strong> <a href="https://calendly.com/emiliopalacin/30min" target="_blank" rel="noopener" style="color:var(--dorado);font-weight:bold">Diagnóstico sin costo →</a></p>
-</div>
-<a href="simulador.html" class="btn-card sim">Abrir el simulador</a>
-</div>
+    <div class="card">
+      <div class="perfil">
+        <img src="foto-epg.jpg" alt="Ing. Emilio Palacín Gómez" onerror="this.style.display='none'">
+        <div>
+          <p class="n">Ing. Emilio Palacín Gómez, PMP</p>
+          <p class="r">Control de proyectos de infraestructura</p>
+        </div>
+      </div>
+      <p>Ingeniero Electricista con más de 20 años en proyectos de infraestructura. Ayudo a la dirección a
+      <b>ver el desvío a tiempo</b> —costo y plazo por capítulo— para corregir mientras el margen todavía
+      se puede salvar.</p>
+      <div class="foot"><a class="btn-card linea" href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener">Ver perfil</a></div>
+    </div>
 
-<div class="card">
-<div class="card-content">
-<h3><i class="fas fa-chart-line"></i> Empiece por un proyecto</h3>
-<p>El primer diagnóstico es sin costo: con un proyecto suyo en ejecución, le muestro en qué semana cierra realmente y cuánto margen hay en juego. Si no le dice nada nuevo, no me debe nada.</p>
-</div>
-<p class="alt-card">¿Aún no quiere reservar hora? <a href="https://forms.gle/DNkzsCYxoQdbEvLr7" target="_blank" rel="noopener">Déjeme sus datos</a> y le escribo yo.</p>
-<a href="https://calendly.com/emiliopalacin/30min" target="_blank" rel="noopener" class="btn-card">Solicitar diagnóstico</a>
-</div>
+    <div class="card">
+      <h3>El servicio, de un vistazo</h3>
+      <p>Qué aporta la obra, qué se analiza en cada corte y qué recibe usted: informe, portafolio y tablero
+      ejecutivo. Sus datos nunca salen de un entorno controlado.</p>
+      <div class="foot"><a class="btn-card" href="servicio.html">Ver alcance del servicio</a></div>
+    </div>
+
+    <div class="card oro">
+      <h3>Simulador EVM</h3>
+      <p>Pruébelo usted mismo: cargue un proyecto —o use un ejemplo— y vea la curva planeada, el valor ganado
+      y el costo real al corte, el presupuesto, CPI y SPI, y en qué fecha y a qué costo cerraría.
+      Corre en su navegador; nada se envía.</p>
+      <p class="nota"><b>¿Prefiere que lo haga yo con sus datos?</b>
+      <a href="https://calendly.com/emiliopalacin/30min" target="_blank" rel="noopener">Diagnóstico sin costo →</a></p>
+      <div class="foot"><a class="btn-card oro" href="simulador.html">Abrir el simulador</a></div>
+    </div>
+
+    <div class="card">
+      <h3>Empiece por un proyecto</h3>
+      <p>El primer diagnóstico es sin costo: con un proyecto suyo en ejecución, le muestro en qué semana
+      cierra realmente y cuánto margen hay en juego. Si no le dice nada nuevo, no me debe nada.</p>
+      <p class="nota">¿Aún no quiere reservar hora?
+      <a href="https://forms.gle/DNkzsCYxoQdbEvLr7" target="_blank" rel="noopener">Déjeme sus datos</a> y le escribo yo.</p>
+      <div class="foot"><a class="btn-card" href="https://calendly.com/emiliopalacin/30min" target="_blank" rel="noopener">Solicitar diagnóstico</a></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <b>P&amp;D Analítica de Infraestructura</b> · Control analítico de proyectos de infraestructura ·
+    Valor Ganado bajo PMBOK 8ª edición
+  </footer>
 
 </div>
-
-<div class="footer">
-<p>&copy; 2026 P&amp;D Analítica de Infraestructura &middot; Control Analítico de Proyectos de Infraestructura</p>
-</div>
-
 </body>
 </html>
