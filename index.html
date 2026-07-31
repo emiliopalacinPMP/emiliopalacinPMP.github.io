@@ -3,7 +3,7 @@
 <head>
 <meta property="og:image" content="https://emiliopalacinpmp.github.io/banner-og.png">
 <meta property="og:title" content="Proteja el margen de sus obras">
-<meta property="og:description" content="Control de Valor Ganado, corte a corte. Primer diagnóstico sin costo."> 
+<meta property="og:description" content="Control de Valor Ganado, corte a corte. Primer diagnóstico sin costo.">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Control de Valor Ganado para Infraestructura | Ing. Emilio Palacín, PMP</title>
@@ -44,7 +44,7 @@ max-width: 1150px;
 margin: auto;
 padding: 10px 20px;
 display: grid;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
 gap: 20px;
 }
 .card {
@@ -58,6 +58,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 }
+.card.sim { border-top-color: var(--dorado); }
 .profile-section {
 display: flex;
 align-items: center;
@@ -77,6 +78,7 @@ display: block;
 .profile-header-text h2 { margin: 0; font-size: 1.1rem; line-height: 1.2; font-weight: bold; color: var(--blanco); }
 .profile-status { color: var(--plata); font-weight: bold; font-size: 0.8rem; margin: 3px 0 0 0; }
 .card-content h3 { color: var(--azul-brillante); margin-top: 0; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; }
+.card.sim .card-content h3 { color: var(--dorado); }
 .card-content p { font-size: 0.9rem; margin-bottom: 15px; }
 header .btn {
 background-color: var(--azul-petroleo);
@@ -90,6 +92,7 @@ margin: 5px;
 font-size: 0.85rem;
 }
 header .btn-primary { background-color: var(--verde-bosque); }
+header .btn-sim { background-color: var(--dorado); color: var(--carbon); }
 header .btn-outline { background-color: transparent; border: 2px solid var(--azul-petroleo); color: var(--azul-petroleo); }
 .btn-card {
 display: block;
@@ -107,6 +110,7 @@ margin-top: auto;
 }
 .btn-card:hover { background-color: var(--azul-brillante); }
 .btn-card.destacado { background-color: var(--verde-bosque); }
+.btn-card.sim { background-color: var(--dorado); color: var(--carbon); }
 .btn-linked-in {
 background-color: rgba(26, 59, 93, 0.4);
 border: 2px solid var(--azul-brillante);
@@ -117,17 +121,18 @@ color: var(--blanco);
 </style>
 </head>
 <body>
- 
+
 <header>
 <h1>Proteja el margen de sus obras — y recupere el que hoy se escapa</h1>
 <p class="tagline">Control de <strong>Valor Ganado</strong> bajo estándar PMI, corte a corte:<br>sepa en qué semana cierra realmente cada proyecto y en cuánto, a tiempo para corregir.</p>
 <a href="mailto:emiliopalacinPMP@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Diagnóstico sin costo</a>
+<a href="simulador.html" class="btn btn-sim"><i class="fas fa-calculator"></i> Probar el simulador</a>
 <a href="https://www.linkedin.com/in/emiliopalacinPMP" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
 <a href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" class="btn btn-outline"><i class="fas fa-newspaper"></i> Newsletter</a>
 </header>
- 
+
 <div class="main-container">
- 
+
 <div class="card">
 <div class="profile-section">
 <img src="foto-epg.jpg" alt="Ing. Emilio Palacín" class="profile-photo-small">
@@ -141,7 +146,7 @@ color: var(--blanco);
 </div>
 <a href="https://www.linkedin.com/in/emiliopalacinPMP" class="btn-card btn-linked-in">Ver perfil</a>
 </div>
- 
+
 <div class="card">
 <div class="card-content">
 <h3><i class="fas fa-shield-halved"></i> El servicio, de un vistazo</h3>
@@ -149,7 +154,15 @@ color: var(--blanco);
 </div>
 <a href="servicio.html" class="btn-card destacado">Ver alcance del servicio</a>
 </div>
- 
+
+<div class="card sim">
+<div class="card-content">
+<h3><i class="fas fa-calculator"></i> Simulador EVM</h3>
+<p>Pruébelo usted mismo: cargue un proyecto (o use un ejemplo) y vea la curva PV, el valor ganado y el costo real al corte, el BAC, CPI/SPI y en qué fecha y a qué costo cerraría. Corre en su navegador; nada se envía.</p>
+</div>
+<a href="simulador.html" class="btn-card sim">Abrir el simulador</a>
+</div>
+
 <div class="card">
 <div class="card-content">
 <h3><i class="fas fa-chart-line"></i> Empiece por un proyecto</h3>
@@ -157,13 +170,12 @@ color: var(--blanco);
 </div>
 <a href="mailto:emiliopalacinPMP@gmail.com" class="btn-card">Solicitar diagnóstico</a>
 </div>
- 
+
 </div>
- 
+
 <div class="footer">
-<p>&copy; 2026 P&amp;D Infrastructure Intelligence &middot; Control Analítico de Proyectos de Infraestructura</p>
+<p>&copy; 2026 P&amp;D Analítica de Infraestructura &middot; Control Analítico de Proyectos de Infraestructura</p>
 </div>
- 
+
 </body>
 </html>
- 
