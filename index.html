@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Control de Valor Ganado para obras de infraestructura, corte a corte: en qué semana cierra realmente cada proyecto y en cuánto. Primer diagnóstico sin costo.">
+<link rel="canonical" href="https://emiliopalacinpmp.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="P&amp;D Analítica de Infraestructura">
+<meta property="og:locale" content="es_CO">
+<meta property="og:url" content="https://emiliopalacinpmp.github.io/">
+<meta property="og:title" content="Proteja el margen de sus obras">
+<meta property="og:description" content="Control de Valor Ganado, corte a corte. Primer diagnóstico sin costo.">
+<meta property="og:image" content="https://emiliopalacinpmp.github.io/og-servicio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Proteja el margen de sus obras — y recupere el que hoy se escapa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proteja el margen de sus obras">
+<meta name="twitter:description" content="Control de Valor Ganado, corte a corte. Primer diagnóstico sin costo.">
+<meta name="twitter:image" content="https://emiliopalacinpmp.github.io/og-servicio.png">
+<title>Control de Valor Ganado para Infraestructura | Ing. Emilio Palacín, PMP</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+--azul-petroleo: #1A3B5D;
+--verde-bosque: #0F6E56;
+--carbon: #2C3E50;
+--plata: #BDC3C7;
+--azul-brillante: #2980B9;
+--dorado: #C9971C;
+--blanco: #FFFFFF;
+--gris-tecnico: #7F8C8D;
+}
+body {
+font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+background-color: var(--carbon);
+color: var(--plata);
+margin: 0;
+line-height: 1.6;
+}
+header {
+background-color: var(--plata);
+padding: 40px 24px;
+text-align: center;
+border-bottom: 4px solid var(--azul-petroleo);
+max-width: 1100px;
+margin: 20px auto;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+header h1 { color: var(--azul-petroleo); margin: 0 0 6px 0; font-size: 1.9rem; font-weight: 800; line-height:1.2; }
+header .tagline { color: var(--carbon); margin-bottom: 22px; font-weight: 500; font-size: 1rem; }
+header .tagline strong { color: var(--verde-bosque); }
+.main-container {
+max-width: 1150px;
+margin: auto;
+padding: 10px 20px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+gap: 20px;
+}
+.card {
+background-color: rgba(26, 59, 93, 0.2);
+padding: 25px;
+border-radius: 12px;
+border: 1px solid var(--azul-petroleo);
+border-top: 5px solid var(--azul-brillante);
+box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+.card.sim { border-top-color: var(--dorado); }
+.profile-section {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 15px;
+padding-bottom: 10px;
+border-bottom: 1px solid rgba(127, 140, 141, 0.3);
+}
+.profile-photo-small {
+width: 45px;
+height: 45px;
+border-radius: 4px;
+border: 1px solid var(--azul-brillante);
+object-fit: cover;
+display: block;
+}
+.profile-header-text h2 { margin: 0; font-size: 1.1rem; line-height: 1.2; font-weight: bold; color: var(--blanco); }
+.profile-status { color: var(--plata); font-weight: bold; font-size: 0.8rem; margin: 3px 0 0 0; }
+.card-content h3 { color: var(--azul-brillante); margin-top: 0; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; }
+.card.sim .card-content h3 { color: var(--dorado); }
+.card-content p { font-size: 0.9rem; margin-bottom: 15px; }
+header .btn {
+background-color: var(--azul-petroleo);
+color: var(--blanco);
+padding: 10px 24px;
+text-decoration: none;
+border-radius: 6px;
+font-weight: bold;
+display: inline-block;
+margin: 5px;
+font-size: 0.85rem;
+}
+header .btn-primary { background-color: var(--verde-bosque); }
+header .btn-sim { background-color: var(--dorado); color: var(--carbon); }
+header .btn-outline { background-color: transparent; border: 2px solid var(--azul-petroleo); color: var(--azul-petroleo); }
+.btn-card {
+display: block;
+background-color: var(--azul-petroleo);
+color: var(--blanco);
+padding: 10px 20px;
+text-decoration: none;
+border-radius: 6px;
+font-weight: bold;
+transition: 0.3s;
+text-transform: uppercase;
+font-size: 0.8rem;
+text-align: center;
+margin-top: auto;
+}
+.btn-card:hover { background-color: var(--azul-brillante); }
+.btn-card.destacado { background-color: var(--verde-bosque); }
+.btn-card.sim { background-color: var(--dorado); color: var(--carbon); }
+.btn-linked-in {
+background-color: rgba(26, 59, 93, 0.4);
+border: 2px solid var(--azul-brillante);
+color: var(--blanco);
+}
+.btn:focus-visible, .btn-card:focus-visible { outline: 3px solid var(--dorado); outline-offset: 3px; }
+.footer { text-align: center; padding: 30px 20px; color: var(--gris-tecnico); font-size: 0.8rem; border-top: 1px solid var(--azul-petroleo); margin-top: 30px; }
+@media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } header { max-width: 95%; } }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Proteja el margen de sus obras — y recupere el que hoy se escapa</h1>
+<p class="tagline">Control de <strong>Valor Ganado</strong> bajo estándar PMI, corte a corte:<br>sepa en qué semana cierra realmente cada proyecto y en cuánto, a tiempo para corregir.</p>
+<a href="mailto:emiliopalacinPMP@gmail.com?subject=Diagn%C3%B3stico%20sin%20costo%20%E2%80%94%20mi%20proyecto&body=Ing.%20Emilio%2C%20quiero%20un%20diagn%C3%B3stico%20sin%20costo.%20Mi%20proyecto%3A%20%5Bnombre%5D.%20Estado%3A%20en%20ejecuci%C3%B3n." class="btn btn-primary"><i class="fas fa-envelope"></i> Agendar diagnóstico sin costo</a>
+<a href="simulador.html" class="btn btn-sim"><i class="fas fa-calculator"></i> Probar el simulador</a>
+<a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+<a href="https://www.linkedin.com/newsletters/proyectos-datos-7429218807849713664" target="_blank" rel="noopener" class="btn btn-outline"><i class="fas fa-newspaper"></i> Newsletter</a>
+</header>
+
+<div class="main-container">
+
+<div class="card">
+<div class="profile-section">
+<img src="foto-epg.jpg" alt="Ing. Emilio Palacín" class="profile-photo-small">
+<div class="profile-header-text">
+<h2>Ing. Emilio Palacín Gómez<br>PMP</h2>
+<p class="profile-status">Control de proyectos de infraestructura</p>
+</div>
+</div>
+<div class="card-content">
+<p>Ingeniero Electricista con más de 20 años en proyectos de infraestructura. Ayudo a la dirección a <strong>ver el desvío a tiempo</strong> —costo y plazo por capítulo— para corregir mientras el margen todavía se puede salvar.</p>
+</div>
+<a href="https://www.linkedin.com/in/emiliopalacinPMP" target="_blank" rel="noopener" class="btn-card btn-linked-in">Ver perfil</a>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3><i class="fas fa-shield-halved"></i> El servicio, de un vistazo</h3>
+<p>Qué aporta la obra, qué se analiza en cada corte y qué recibe usted: informe, portafolio y tablero ejecutivo. Sus datos nunca salen de un entorno controlado.</p>
+</div>
+<a href="servicio.html" class="btn-card destacado">Ver alcance del servicio</a>
+</div>
+
+<div class="card sim">
+<div class="card-content">
+<h3><i class="fas fa-calculator"></i> Simulador EVM</h3>
+<p>Pruébelo usted mismo: cargue un proyecto (o use un ejemplo) y vea la curva PV, el valor ganado y el costo real al corte, el BAC, CPI/SPI y en qué fecha y a qué costo cerraría. Corre en su navegador; nada se envía.</p>
+<p style="font-size:0.85rem;color:var(--plata);margin:0"><strong>¿Prefiere que lo haga yo con sus datos?</strong> <a href="mailto:emiliopalacinPMP@gmail.com?subject=Diagn%C3%B3stico%20sin%20costo%20%E2%80%94%20mi%20proyecto" style="color:var(--dorado);font-weight:bold">Diagnóstico sin costo →</a></p>
+</div>
+<a href="simulador.html" class="btn-card sim">Abrir el simulador</a>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3><i class="fas fa-chart-line"></i> Empiece por un proyecto</h3>
+<p>El primer diagnóstico es sin costo: con un proyecto suyo en ejecución, le muestro en qué semana cierra realmente y cuánto margen hay en juego. Si no le dice nada nuevo, no me debe nada.</p>
+</div>
+<a href="mailto:emiliopalacinPMP@gmail.com?subject=Diagn%C3%B3stico%20sin%20costo%20%E2%80%94%20mi%20proyecto&body=Ing.%20Emilio%2C%20quiero%20un%20diagn%C3%B3stico%20sin%20costo.%20Mi%20proyecto%3A%20%5Bnombre%5D.%20Estado%3A%20en%20ejecuci%C3%B3n." class="btn-card">Solicitar diagnóstico</a>
+</div>
+
+</div>
+
+<div class="footer">
+<p>&copy; 2026 P&amp;D Analítica de Infraestructura &middot; Control Analítico de Proyectos de Infraestructura</p>
+</div>
+
+</body>
+</html>
